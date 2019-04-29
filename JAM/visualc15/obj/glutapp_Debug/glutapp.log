@@ -1,0 +1,6 @@
+﻿  App.cpp
+C:\Users\Mason\Documents\CSE165\JAM\App.cpp(23): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Mason\Documents\CSE165\JAM\App.cpp(24): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Mason\Documents\CSE165\JAM\App.cpp(25): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Mason\Documents\CSE165\JAM\App.cpp(26): warning C4305: 'argument': truncation from 'double' to 'float'
+  glutapp.vcxproj -> C:\Users\Mason\Documents\CSE165\JAM\visualc15\obj\glutapp_Debug\glutapp.exe
