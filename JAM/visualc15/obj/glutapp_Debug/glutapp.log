@@ -1,6 +1,52 @@
-﻿  App.cpp
-C:\Users\Mason\Documents\CSE165\JAM\App.cpp(23): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Mason\Documents\CSE165\JAM\App.cpp(24): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Mason\Documents\CSE165\JAM\App.cpp(25): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Mason\Documents\CSE165\JAM\App.cpp(26): warning C4305: 'argument': truncation from 'double' to 'float'
-  glutapp.vcxproj -> C:\Users\Mason\Documents\CSE165\JAM\visualc15\obj\glutapp_Debug\glutapp.exe
+﻿  AnimatedRect.cpp
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\AnimatedRect.cpp(60): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\AnimatedRect.cpp(61): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  App.cpp
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(10): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(11): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(12): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(13): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(15): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(16): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\App.cpp(15): warning C4305: '+=': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\App.cpp(24): warning C4305: '-=': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\App.cpp(34): warning C4305: '+=': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\App.cpp(41): warning C4305: '-=': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\App.cpp(52): warning C4305: '+=': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\App.cpp(59): warning C4305: '-=': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\App.cpp(74): error C2061: syntax error: identifier 'game'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\App.cpp(74): error C2513: 'Game': no variable declared before '='
+  app_main.cpp
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(10): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(11): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(12): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(13): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(15): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(16): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Game.cpp
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(10): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(11): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(12): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(13): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(15): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(16): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(11): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(11): error C2556: 'int Game::draw(void)': overloaded function differs only by return type from 'void Game::draw(void)'
+  D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(26): note: see declaration of 'Game::draw'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(11): error C2371: 'Game::draw': redefinition; different basic types
+  D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(26): note: see declaration of 'Game::draw'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(28): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(28): error C2556: 'int Game::handledown(unsigned char)': overloaded function differs only by return type from 'void Game::handledown(unsigned char)'
+  D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(27): note: see declaration of 'Game::handledown'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(28): error C2371: 'Game::handledown': redefinition; different basic types
+  D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(27): note: see declaration of 'Game::handledown'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(49): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(49): error C2556: 'int Game::handleup(unsigned char)': overloaded function differs only by return type from 'void Game::handleup(unsigned char)'
+  D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(28): note: see declaration of 'Game::handleup'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(49): error C2371: 'Game::handleup': redefinition; different basic types
+  D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(28): note: see declaration of 'Game::handleup'
+  GlutApp.cpp
+  Rect.cpp
+  TexRect.cpp
+  Timer.cpp
+  Generating Code...

@@ -118,6 +118,7 @@
     <ClCompile Include="..\AnimatedRect.cpp" />
     <ClCompile Include="..\App.cpp" />
     <ClCompile Include="..\app_main.cpp" />
+    <ClCompile Include="..\Game.cpp" />
     <ClCompile Include="..\GlutApp.cpp" />
     <ClCompile Include="..\Rect.cpp" />
     <ClCompile Include="..\TexRect.cpp" />
@@ -130,6 +131,7 @@
   <ItemGroup>
     <ClInclude Include="..\AnimatedRect.h" />
     <ClInclude Include="..\App.h" />
+    <ClInclude Include="..\Game.h" />
     <ClInclude Include="..\GlutApp.h" />
     <ClInclude Include="..\Rect.h" />
     <ClInclude Include="..\TexRect.h" />

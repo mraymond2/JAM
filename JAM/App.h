@@ -2,14 +2,11 @@
 #define App_h
 
 #include "GlutApp.h"
-#include "AnimatedRect.h"
+#include "Game.h"
 
 class App: public GlutApp {
-	TexRect* bg1;
-	AnimatedRect* idleR;
-	AnimatedRect* idleL;
-	AnimatedRect* runR;
-	AnimatedRect* runL;
+	Game* game;
+	
 
 public:
     App(int argc, char** argv, int width, int height, const char* title);
