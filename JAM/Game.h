@@ -14,6 +14,7 @@ public:
 	float runmasterW = 0.25;
 	float runmasterLH = 0.415;
 	float runmasterRH = 0.395;
+
 	int jumpState = 0;
 	TexRect* bg1;
 	AnimatedRect* idleR;

@@ -14,15 +14,6 @@ D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\App.cpp(34): warning C4305: '+=': tr
 D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\App.cpp(41): warning C4305: '-=': truncation from 'double' to 'float'
 D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\App.cpp(52): warning C4305: '+=': truncation from 'double' to 'float'
 D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\App.cpp(59): warning C4305: '-=': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\App.cpp(74): error C2061: syntax error: identifier 'game'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\App.cpp(74): error C2513: 'Game': no variable declared before '='
-  app_main.cpp
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(10): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(11): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(12): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(13): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(15): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(16): warning C4305: 'initializing': truncation from 'double' to 'float'
   Game.cpp
 D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(10): warning C4305: 'initializing': truncation from 'double' to 'float'
 D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(11): warning C4305: 'initializing': truncation from 'double' to 'float'
@@ -30,23 +21,58 @@ D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(12): warning C4305: 'initiali
 D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(13): warning C4305: 'initializing': truncation from 'double' to 'float'
 D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(15): warning C4305: 'initializing': truncation from 'double' to 'float'
 D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(16): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(11): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(11): error C2556: 'int Game::draw(void)': overloaded function differs only by return type from 'void Game::draw(void)'
-  D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(26): note: see declaration of 'Game::draw'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(11): error C2371: 'Game::draw': redefinition; different basic types
-  D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(26): note: see declaration of 'Game::draw'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(28): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(28): error C2556: 'int Game::handledown(unsigned char)': overloaded function differs only by return type from 'void Game::handledown(unsigned char)'
-  D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(27): note: see declaration of 'Game::handledown'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(28): error C2371: 'Game::handledown': redefinition; different basic types
-  D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(27): note: see declaration of 'Game::handledown'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(49): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(49): error C2556: 'int Game::handleup(unsigned char)': overloaded function differs only by return type from 'void Game::handleup(unsigned char)'
-  D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(28): note: see declaration of 'Game::handleup'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(49): error C2371: 'Game::handleup': redefinition; different basic types
-  D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(28): note: see declaration of 'Game::handleup'
   GlutApp.cpp
   Rect.cpp
   TexRect.cpp
   Timer.cpp
+  app_main.cpp
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(10): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(11): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(12): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(13): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(15): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(16): warning C4305: 'initializing': truncation from 'double' to 'float'
   Generating Code...
+  SOIL.c
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\windows\SOIL.c(1719): warning C4018: '<=': signed/unsigned mismatch
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\windows\SOIL.c(1729): warning C4018: '<': signed/unsigned mismatch
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\windows\SOIL.c(1841): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+  image_DXT.c
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\windows\image_DXT.c(92): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+  image_helper.c
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\windows\image_helper.c(325): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\windows\image_helper.c(366): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\windows\image_helper.c(373): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\windows\image_helper.c(415): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\windows\image_helper.c(422): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  stb_image_aug.c
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\windows\stb_image_aug.c(177): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\windows\stb_image_aug.c(251): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\windows\stb_image_aug.c(303): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\windows\stb_image_aug.c(1557): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\windows\stb_image_aug.c(2394): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\windows\stb_image_aug.c(2709): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\windows\stb_image_aug.c(2995): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\windows\stb_image_aug.c(3209): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\windows\stb_image_aug.c(3548): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\windows\stb_image_aug.c(3644): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\windows\stbi_DDS_aug_c.h(362): warning C4018: '>': signed/unsigned mismatch
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\windows\stbi_DDS_aug_c.h(366): warning C4018: '>': signed/unsigned mismatch
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\windows\stbi_DDS_aug_c.h(390): warning C4018: '<': signed/unsigned mismatch
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\windows\stbi_DDS_aug_c.h(427): warning C4018: '<': signed/unsigned mismatch
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\windows\stbi_DDS_aug_c.h(498): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+  Generating Code...
+  glutapp.vcxproj -> D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\visualc15\obj\glutapp_Debug\glutapp.exe

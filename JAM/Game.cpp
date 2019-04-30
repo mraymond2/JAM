@@ -1,14 +1,15 @@
 #include "Game.h"
 
 Game::Game() {
-	bg1 = new TexRect("/Users/Aaron Abon/Desktop/School/CSE_165/JAM/JAM/fight_room_background.png", -2, 1, 4, 2);
-	idleR = new AnimatedRect("/Users/Aaron Abon/Desktop/School/CSE_165/JAM/JAM/IdleR.png", 1, 1, 65, true, true, masterX, masterY, idlemasterW, idlemasterH);
-	idleL = new AnimatedRect("/Users/Aaron Abon/Desktop/School/CSE_165/JAM/JAM/IdleL.png", 1, 1, 65, true, true, masterX, masterY, idlemasterW, idlemasterH);
-	runL = new AnimatedRect("/Users/Aaron Abon/Desktop/School/CSE_165/JAM/JAM/RunGunL.png", 1, 10, 65, true, true, masterX, masterY, runmasterW, runmasterLH);
-	runR = new AnimatedRect("/Users/Aaron Abon/Desktop/School/CSE_165/JAM/JAM/RunGunR.png", 1, 10, 65, true, true, masterX, masterY, runmasterW, runmasterRH);
+	bg1 = new TexRect("/Schoolwork/CSE165/MetroidProject/JAM/JAM/fight_room_background.png", -2, 1, 4, 2);
+	idleR = new AnimatedRect("/Schoolwork/CSE165/MetroidProject/JAM/JAM/IdleR.png", 1, 1, 65, true, true, masterX, masterY, idlemasterW, idlemasterH);
+	idleL = new AnimatedRect("/Schoolwork/CSE165/MetroidProject/JAM/JAM/IdleL.png", 1, 1, 65, true, true, masterX, masterY, idlemasterW, idlemasterH);
+	runL = new AnimatedRect("/Schoolwork/CSE165/MetroidProject/JAM/JAM/RunGunL.png", 1, 10, 65, true, true, masterX, masterY, runmasterW, runmasterLH);
+	runR = new AnimatedRect("/Schoolwork/CSE165/MetroidProject/JAM/JAM/RunGunR.png", 1, 10, 65, true, true, masterX, masterY, runmasterW, runmasterRH);
 }
 
-Game::draw() {
+void Game::draw() {
+
 	bg1->draw(0);
 
 	if (state == 0 || state == 4) {
@@ -25,7 +26,7 @@ Game::draw() {
 	}
 }
 
-Game::handledown(unsigned char key) {
+void Game::handledown(unsigned char key) {
 	if (key == 'd') {
 		//std::cout << "Move right" << std::endl;
 		state = 2;
@@ -46,7 +47,7 @@ Game::handledown(unsigned char key) {
 		}
 	}
 }
-Game::handleup(unsigned char key) {
+void Game::handleup(unsigned char key) {
 	if (key == 'd') {
 		state = 0;
 	}

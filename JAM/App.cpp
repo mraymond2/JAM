@@ -71,7 +71,7 @@ void timer(int id) {
 }
 
 App::App(int argc, char** argv, int width, int height, const char* title): GlutApp(argc, argv, width, height, title){
-	Game = new game;
+	game = new Game;
 	
 	singleton = this;
 	timer(1);
