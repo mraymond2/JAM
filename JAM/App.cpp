@@ -10,12 +10,14 @@ float idlemasterH = 0.39;
 float runmasterW = 0.25;
 float runmasterLH = 0.415;
 float runmasterRH = 0.395;
+int jumpState = 0;
 
 void timer(int id) {
 	// This will get called every 8 milliseconds after
 	// you call it once
 
 	float currX = singleton->runR->getX();
+	float currY = singleton->runR->getY();
 
 	if (state == 2) {
 		currX += 0.012;
@@ -35,6 +37,42 @@ void timer(int id) {
 		currX = masterX;
 	}
 
+	if (state == 4) {
+		if (currY < 0.3 && jumpState == 1) {
+			currY += 0.012;
+			singleton->runR->setY(currY);
+			singleton->idleR->setY(currY);
+			singleton->idleL->setY(currY);
+			singleton->runL->setY(currY);
+		}
+		else if (currY > -0.3 && jumpState == 2) {
+			currY -= 0.012;
+			singleton->runR->setY(currY);
+			singleton->idleR->setY(currY);
+			singleton->idleL->setY(currY);
+			singleton->runL->setY(currY);
+		}
+		singleton->idleR->setY(currY);
+	}
+
+	if (state == 5) {
+		if (currY < 0.3 && jumpState == 1) {
+			currY += 0.012;
+			singleton->runR->setY(currY);
+			singleton->idleR->setY(currY);
+			singleton->idleL->setY(currY);
+			singleton->runL->setY(currY);
+		}
+		if (currY > -0.3 && jumpState == 2) {
+			currY -= 0.012;
+			singleton->runR->setY(currY);
+			singleton->idleR->setY(currY);
+			singleton->idleL->setY(currY);
+			singleton->runL->setY(currY);
+		}
+		singleton->idleL->setY(currY);
+	}
+
 	singleton->redraw();
 
 	glutTimerFunc(8, timer, id);
@@ -42,11 +80,11 @@ void timer(int id) {
 
 App::App(int argc, char** argv, int width, int height, const char* title): GlutApp(argc, argv, width, height, title){
 	//Samus = new TexRect
-	bg1 = new TexRect("/Users/Mason/Documents/CSE165/JAM/fight_room_background.png", -2, 1, 4, 2);
-	idleR = new AnimatedRect("/Users/Mason/Documents/CSE165/JAM/IdleR.png", 1, 1, 65, true, true, masterX, masterY, idlemasterW, idlemasterH);
-	idleL = new AnimatedRect("/Users/Mason/Documents/CSE165/JAM/IdleL.png", 1, 1, 65, true, true, masterX, masterY, idlemasterW, idlemasterH);
-	runL = new AnimatedRect("/Users/Mason/Documents/CSE165/JAM/RunGunL.png", 1, 10, 65, true, true, masterX, masterY, runmasterW, runmasterLH);
-	runR = new AnimatedRect("/Users/Mason/Documents/CSE165/JAM/RunGunR.png", 1, 10, 65, true, true, masterX, masterY, runmasterW, runmasterRH);
+	bg1 = new TexRect("/Users/Aaron Abon/Desktop/School/CSE_165/JAM/JAM/fight_room_background.png", -2, 1, 4, 2);
+	idleR = new AnimatedRect("/Users/Aaron Abon/Desktop/School/CSE_165/JAM/JAM/IdleR.png", 1, 1, 65, true, true, masterX, masterY, idlemasterW, idlemasterH);
+	idleL = new AnimatedRect("/Users/Aaron Abon/Desktop/School/CSE_165/JAM/JAM/IdleL.png", 1, 1, 65, true, true, masterX, masterY, idlemasterW, idlemasterH);
+	runL = new AnimatedRect("/Users/Aaron Abon/Desktop/School/CSE_165/JAM/JAM/RunGunL.png", 1, 10, 65, true, true, masterX, masterY, runmasterW, runmasterLH);
+	runR = new AnimatedRect("/Users/Aaron Abon/Desktop/School/CSE_165/JAM/JAM/RunGunR.png", 1, 10, 65, true, true, masterX, masterY, runmasterW, runmasterRH);
 
 	singleton = this;
 	timer(1);
@@ -85,14 +123,13 @@ void App::keyDown(unsigned char key, float x, float y){
 		//std::cout << "Jump" << std::endl;
 		if (state % 2 == 0) {
 			state = 4;
+			jumpState = 1;
 		}
 		else {
 			state = 5;
+			jumpState = 1;
 		}
 	} 
-	if (key == 'w') {
-
-	}
 }
 
 void App::keyUp(unsigned char key, float x, float y) {
@@ -101,6 +138,16 @@ void App::keyUp(unsigned char key, float x, float y) {
 	}
 	if (key == 'a') {
 		state = 1;
+	}
+	if (key == ' ') {
+		if (state % 2 == 0) {
+			state = 4;
+			jumpState = 2;
+		}
+		else {
+			state = 5;
+			jumpState = 2;
+		}
 	}
 }
 
