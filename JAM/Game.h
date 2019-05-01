@@ -14,9 +14,12 @@ public:
 	float runmasterW = 0.25;
 	float runmasterLH = 0.415;
 	float runmasterRH = 0.395;
-
 	int jumpState = 0;
+	int currentroom = 1;
+
 	TexRect* bg1;
+	TexRect* bg2;
+	AnimatedRect* Samus;
 	AnimatedRect* idleR;
 	AnimatedRect* idleL;
 	AnimatedRect* runR;
@@ -29,6 +32,7 @@ public:
 	void handleup(unsigned char key);
 	
 };
+
 
 
 

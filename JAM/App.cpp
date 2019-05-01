@@ -10,7 +10,7 @@ void timer(int id) {
 
 	float currX = singleton->game->runR->getX();
 	float currY = singleton->game->runR->getY();
-
+	
 	if (singleton->game->state == 2) {
 		currX += 0.012;
 		singleton->game->runR->setX(currX);
