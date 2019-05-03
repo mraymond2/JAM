@@ -134,6 +134,7 @@
     <ClInclude Include="..\Game.h" />
     <ClInclude Include="..\GlutApp.h" />
     <ClInclude Include="..\Rect.h" />
+    <ClInclude Include="..\Shape.h" />
     <ClInclude Include="..\TexRect.h" />
     <ClInclude Include="..\Timer.h" />
     <ClInclude Include="..\windows\image_DXT.h" />

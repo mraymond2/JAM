@@ -6,8 +6,16 @@
 
 class Game: private Timer{
 public:
+	bool samuscanbedamaged = true;
+	bool metroidalive = true;
+	//remove this later - actually dont
+	bool metroidattacking = false;
+	bool up = true;
+	bool left = true;
 	float currX = 0;
 	float currY = 0;
+	float metroidX = 0.7;
+	float metroidY = 0.5;
 	int energy = 99;
 	int state = 0;
 	float masterX = -0.1;
@@ -29,6 +37,7 @@ public:
 	AnimatedRect* runL;
 	Rect* bg1Wall;
 	Rect* bg2Wall;
+	AnimatedRect* Metroidspawn;
 
  
 	Game();

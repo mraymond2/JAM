@@ -8,6 +8,7 @@ Game::Game() {
 	idleL = new AnimatedRect("../IdleL.png", 1, 1, 65, true, true, masterX, masterY, idlemasterW, idlemasterH);
 	runL = new AnimatedRect("../RunGunL.png", 1, 10, 65, true, true, masterX, masterY, runmasterW, runmasterLH);
 	runR = new AnimatedRect("../RunGunR.png", 1, 10, 65, true, true, masterX, masterY, runmasterW, runmasterRH);
+	Metroidspawn = new AnimatedRect("../ms1.png", 2, 5, 65, true, true, 0.7, 0.5, 0.3, 0.3);
 	bg1Wall = new Rect(-2, 1, 0.4, 2);
 	bg2Wall = new Rect(1.9, 1, 0.1, 2);
 	setRate(8);
@@ -16,10 +17,14 @@ Game::Game() {
 
 void Game::draw() {
 	if (currentroom == 1) {
+		
 		masterX = -0.1;
 		masterY = -0.3;
 		bg1->draw(0);
 		bg1Wall->draw();
+		if (metroidalive) {
+			Metroidspawn->draw(1);
+		}
 	}
 	if (currentroom == 2) {
 		masterX = -0.5;
@@ -77,6 +82,7 @@ void Game::updateX(float currX) {
 	idleR->setX(currX);
 	idleL->setX(currX);
 	runL->setX(currX);
+	
 }
 
 void Game::updateY(float currY) {
@@ -84,6 +90,7 @@ void Game::updateY(float currY) {
 	idleR->setY(currY);
 	idleL->setY(currY);
 	runL->setY(currY);
+	
 }
 
 float Game::checkRoom(float currX) {
@@ -156,7 +163,54 @@ void Game::action() {
 		}
 		idleL->setY(currY);
 	}
+
+	float mx = Metroidspawn->getX();
+	float my = Metroidspawn->getY();
+
+	if (left)
+		mx -= 0.01;
+	else
+		mx += 0.01;
+
+	if (mx < -1) {
+		left = false;
+	}
+	if (mx > 1.5 - Metroidspawn->getW()) {
+		left = true;
+	}
+
+	if (!up)
+		my -= 0.005;
+	else
+		my += 0.005;
+	if (my < -0.4) {
+		up = true;
+	}
+	
+	if (my > 0.5 - Metroidspawn->getH()) {
+		up = false;
+	}
+	
+
+	Metroidspawn->setX(mx);
+	Metroidspawn->setY(my);
+	
+	if (samuscanbedamaged) {
+		if (Metroidspawn->contains(currX + (idlemasterW / 2), currY - (idlemasterH / 3.7))) {
+			energy -=5;
+			samuscanbedamaged = false;
+			std::cout << "Samus got hit. Energy is: " << energy << std::endl;
+		}
+	}
+	else
+		if (!Metroidspawn->contains(currX + (idlemasterW / 2), currY - (idlemasterH / 3.7))) {
+			samuscanbedamaged = true;
+		}
+	
+
 	glutPostRedisplay();
+
+	
 }
 
 Game::~Game() {
