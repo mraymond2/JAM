@@ -1,6 +1,12 @@
 #include "Game.h"
+#include <mmsystem.h>
+#include <mciapi.h>
+
+#pragma comment(lib, "Winmm.lib")
 
 Game::Game() {
+	mciSendString("open \"../brinstardepths.mp3\" type mpegvideo alias mp3", NULL, 0, NULL);
+	mciSendString("play mp3 repeat", NULL, 0, NULL);
 	Samus = new AnimatedRect("../IdleR.png", 1, 1, 65, true, true, masterX, masterY, idlemasterW, idlemasterH);
 	bg1 = new TexRect("../fight_room_background.png", -2, 1, 4, 2);
 	bg2 = new TexRect("../FusionMain3.png", -2, 1, 4, 2);
