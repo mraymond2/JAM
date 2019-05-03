@@ -8,6 +8,10 @@
 class Game: private Timer{
 public:
 	
+
+	int angelohealth = 200;
+	bool change = false;
+	bool angeloalive = true;
 	bool alreadyplayedbrinstar = false;
 	bool alreadyplayedmega = false;
 	bool samuscanbedamaged = true;
@@ -16,6 +20,8 @@ public:
 	bool metroidattacking = false;
 	bool up = true;
 	bool left = true;
+	bool angleft = true;
+	bool angup = true;
 	float currX = 0;
 	float currY = 0;
 	float metroidX = 0.7;
@@ -32,7 +38,9 @@ public:
 	int jumpState = 0;
 	int currentroom = 1;
 
+	
 	TextBox* Energylevel;
+	AnimatedRect* Angelo;
 	AnimatedRect* Energytank;
 	TexRect* bg1;
 	TexRect* bg2;
@@ -58,6 +66,7 @@ public:
 	float checkRoom(float currX);
 	void samusMove(float curX, float currY);
 	void metroid(float mx, float my);
+	void angelo(float angX, float angY);
 	void action();
 	~Game();
 };

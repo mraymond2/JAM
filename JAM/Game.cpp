@@ -15,6 +15,7 @@
 
 
 Game::Game() {
+	Angelo = new AnimatedRect("../angelo.png", 1, 1, 65, true, true, 0.7, 0.5, 0.45, 0.45);
 	Energytank = new AnimatedRect("../energytanksprite.png", 1, 3, 65, true, true, -1.975, .95, 0.2, 0.2);
 	Samus = new AnimatedRect("../IdleR.png", 1, 1, 65, true, true, masterX, masterY, idlemasterW, idlemasterH);
 	bg1 = new TexRect("../fight_room_background.png", -2, 1, 4, 2);
@@ -44,7 +45,11 @@ void Game::draw() {
 		masterX = -0.5;
 		masterY = -0.5;
 		bg2->draw(0);
+		bg1Wall->draw();
 		bg2Wall->draw();
+		if (angeloalive) {
+			Angelo->draw(1);
+		}
 	}
 
 	if (state == 0 || state == 4) {
@@ -60,6 +65,8 @@ void Game::draw() {
 		runL->draw(1);
 	}
 	Energytank->draw(1);
+
+	
 }
 
 void Game::handleDown(unsigned char key) {
@@ -84,6 +91,16 @@ void Game::handleDown(unsigned char key) {
 	}
 	if (key == 'f') {
 		metroidalive = false;
+	}
+
+	if (key == 'o') {
+		angelohealth = angelohealth - 50;
+		if (angelohealth <= 50) {
+			if (change == false) {
+				Angelo->setMap("../sansgelo.png", 1, 1);
+				change == true;
+			}
+		}
 	}
 }
 void Game::handleUp(unsigned char key) {
@@ -112,7 +129,7 @@ void Game::updateY(float currY) {
 float Game::checkRoom(float currX) {
 	if (currX > 2) {
 		currentroom = 2;
-		return (currX - 4);
+		return (currX - 3.5);
 	}
 
 	if (currX < -2 - idleL->getW()) {
@@ -140,6 +157,8 @@ void Game::music() {
 		}
 	}
 }
+
+
 
 void Game::samusMove(float currX, float currY) {
 	//run right
@@ -242,16 +261,47 @@ void Game::metroid(float mx, float my) {
 	}
 }
 
+void Game::angelo(float mx, float my) {
+	if (left)
+		mx -= 0.01;
+	else
+		mx += 0.01;
+	if (mx < -1) {
+		left = false;
+	}
+	if (mx > 1.5 - Angelo->getW()) {
+		left = true;
+	}
+	//up-down movement
+	if (!up)
+		my -= 0.005;
+	else
+		my += 0.005;
+	if (my < -0.4) {
+		up = true;
+	}
+	if (my > 0.5 - Angelo->getH()) {
+		up = false;
+	}
+
+	Angelo->setX(mx);
+	Angelo->setY(my);
+
+}
+
 void Game::action() {
 	currX = runR->getX();
 	currY = runR->getY();
 	float mx = Metroidspawn->getX();
 	float my = Metroidspawn->getY();
+	float angX = Angelo->getX();
+	float angY = Angelo->getY();
 
+	
 	music();
 	samusMove(currX, currY);
 	metroid(mx, my);
-
+	angelo(angX, angY);
 	glutPostRedisplay();
 }
 
