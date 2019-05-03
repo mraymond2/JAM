@@ -28,9 +28,12 @@ public:
  
 	Game();
 	void draw();
-	void handledown(unsigned char key);
-	void handleup(unsigned char key);
-	
+	void handleDown(unsigned char key);
+	void handleUp(unsigned char key);
+	void updateX(float currX);
+	void updateY(float currY);
+	float checkScreen(float currX);
+
 };
 
 
