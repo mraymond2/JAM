@@ -5,6 +5,7 @@
 
 AnimatedRect::AnimatedRect (const char* map_filename, int rows, int cols, int rate, bool visible=false, bool animated=false, float x=0, float y=0, float w=0.5, float h=0.5): TexRect(map_filename, x, y, w, h){
     
+	filename = map_filename;
     
     glClearColor (0.0, 0.0, 0.0, 0.0);
     glShadeModel(GL_FLAT);
@@ -40,6 +41,20 @@ AnimatedRect::AnimatedRect (const char* map_filename, int rows, int cols, int ra
     this->visible = visible;
     setRate(rate);
     start();
+}
+
+void AnimatedRect::setMap(const char* filename, int rows, int cols) {
+	this->filename = filename;
+	this->rows = rows;
+	this->cols = cols;
+
+	texture_id = SOIL_load_OGL_texture
+	(
+		filename,
+		SOIL_LOAD_AUTO,
+		SOIL_CREATE_NEW_ID,
+		SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
+	);
 }
 
 bool AnimatedRect::done() {

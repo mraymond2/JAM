@@ -4,8 +4,9 @@
 
 #include "AnimatedRect.h"
 
-class Game {
+class Game: private Timer{
 public:
+	int energy = 99;
 	int state = 0;
 	float masterX = -0.1;
 	float masterY = -0.3;
@@ -35,6 +36,10 @@ public:
 	void updateX(float currX);
 	void updateY(float currY);
 	float checkScreen(float currX);
+
+	void action();
+
+	~Game();
 
 };
 

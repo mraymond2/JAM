@@ -23,11 +23,15 @@ class AnimatedRect: public TexRect, protected Timer {
     bool done();
     
     bool flipped;
+
+	const char* filename;
     
 public:
     
     
     AnimatedRect (const char*, int, int, int, bool, bool, float, float, float, float);
+
+	void setMap(const char*, int, int);
     
     void draw(float z);
     

@@ -1,79 +1,10 @@
 #include <iostream>
 #include "App.h"
 
-App* singleton;
-
-void timer(int id) {
-	// This will get called every 8 milliseconds after
-	// you call it once
-
-	float currX = singleton->game->runR->getX();
-	float currY = singleton->game->runR->getY();
-	
-
-
-	if (singleton->game->state == 2) {
-		if (singleton->game->currentroom == 1) {
-			currX += 0.012;
-		}
-		if (singleton->game->currentroom == 2 && !singleton->game->bg2Wall->contains(currX + singleton->game->runR->getW(), currY)) {
-			currX += 0.012;
-		}
-		currX = singleton->game->checkScreen(currX);
-		singleton->game->updateX(currX);
-		currX = singleton->game->masterX;
-	}
-
-	if (singleton->game->state == 3) {
-		if (singleton->game->currentroom == 2) {
-			currX -= 0.012;
-		}
-		if (singleton->game->currentroom == 1 && !singleton->game->bg1Wall->contains(currX, currY)) {
-			currX -= 0.012;
-		}
-		currX = singleton->game->checkScreen(currX);
-		singleton->game->updateX(currX);
-		currX = singleton->game->masterX;
-	}
-
-
-
-	if (singleton->game->state == 4) {
-		if (currY < 0.3 && singleton->game->jumpState == 1) {
-			currY += 0.012;
-			singleton->game->updateY(currY);
-		}
-		else if (currY > -0.3 && singleton->game->jumpState == 2) {
-			currY -= 0.012;
-			singleton->game->updateY(currY);
-		}
-		singleton->game->idleR->setY(currY);
-	}
-
-	if (singleton->game->state == 5) {
-		if (currY < 0.3 && singleton->game->jumpState == 1) {
-			currY += 0.012;
-			singleton->game->updateY(currY);
-		}
-		if (currY > -0.3 && singleton->game->jumpState == 2) {
-			currY -= 0.012;
-			singleton->game->updateY(currY);
-		}
-		singleton->game->idleL->setY(currY);
-	}
-
-
-
-	singleton->redraw();
-
-	glutTimerFunc(8, timer, id);
-}
 
 App::App(int argc, char** argv, int width, int height, const char* title): GlutApp(argc, argv, width, height, title){
 	game = new Game;
 	
-	singleton = this;
-	timer(1);
 }
 
 void App::draw() {

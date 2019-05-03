@@ -17,7 +17,6 @@ public:
 
 	void keyUp(unsigned char key, float x, float y);
 	
-	friend void timer(int);
 
     ~App();
 };
