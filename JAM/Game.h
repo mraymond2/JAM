@@ -6,12 +6,12 @@
 
 class Game: private Timer{
 public:
-	float currX;
-	float currY;
+	float currX = 0;
+	float currY = 0;
 	int energy = 99;
 	int state = 0;
 	float masterX = -0.1;
-	float masterY = -0.3;
+	float masterY = -0.375;
 	float idlemasterW = 0.2;
 	float idlemasterH = 0.39;
 	float runmasterW = 0.25;
@@ -37,12 +37,9 @@ public:
 	void handleUp(unsigned char key);
 	void updateX(float currX);
 	void updateY(float currY);
-	float checkScreen(float currX);
-
+	float checkRoom(float currX);
 	void action();
-
 	~Game();
-
 };
 
 

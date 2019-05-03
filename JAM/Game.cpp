@@ -1,6 +1,5 @@
 #include "Game.h"
 
-
 Game::Game() {
 	Samus = new AnimatedRect("../IdleR.png", 1, 1, 65, true, true, masterX, masterY, idlemasterW, idlemasterH);
 	bg1 = new TexRect("../fight_room_background.png", -2, 1, 4, 2);
@@ -9,16 +8,13 @@ Game::Game() {
 	idleL = new AnimatedRect("../IdleL.png", 1, 1, 65, true, true, masterX, masterY, idlemasterW, idlemasterH);
 	runL = new AnimatedRect("../RunGunL.png", 1, 10, 65, true, true, masterX, masterY, runmasterW, runmasterLH);
 	runR = new AnimatedRect("../RunGunR.png", 1, 10, 65, true, true, masterX, masterY, runmasterW, runmasterRH);
-	bg1Wall = new Rect(-2.1, 1, 0.4, 2);
-	bg2Wall = new Rect(1.9, 1, 0.4, 2);
-	setRate(5);
+	bg1Wall = new Rect(-2, 1, 0.4, 2);
+	bg2Wall = new Rect(1.9, 1, 0.1, 2);
+	setRate(8);
 	start();
 }
 
-
-
 void Game::draw() {
-
 	if (currentroom == 1) {
 		masterX = -0.1;
 		masterY = -0.3;
@@ -74,16 +70,6 @@ void Game::handleUp(unsigned char key) {
 	if (key == 'a') {
 		state = 1;
 	}
-	if (key == ' ') {
-		if (state % 2 == 0) {
-			state = 4;
-			jumpState = 2;
-		}
-		else {
-			state = 5;
-			jumpState = 2;
-		}
-	}
 }
 
 void Game::updateX(float currX) {
@@ -91,8 +77,6 @@ void Game::updateX(float currX) {
 	idleR->setX(currX);
 	idleL->setX(currX);
 	runL->setX(currX);
-	
-
 }
 
 void Game::updateY(float currY) {
@@ -100,10 +84,9 @@ void Game::updateY(float currY) {
 	idleR->setY(currY);
 	idleL->setY(currY);
 	runL->setY(currY);
-
 }
 
-float Game::checkScreen(float currX) {
+float Game::checkRoom(float currX) {
 	if (currX > 2) {
 		currentroom = 2;
 		return (currX - 4);
@@ -114,25 +97,20 @@ float Game::checkScreen(float currX) {
 		return (currX + 4);
 	}
 		else return currX;
-
 }
 
 void Game::action() {
-
-
 	currX = runR->getX();
 	currY = runR->getY();
 
-
 	if (state == 2) {
 		if (currentroom == 1) {
-			
 			currX += 0.012;
 		}
 		if (currentroom == 2 && !bg2Wall->contains(currX + runR->getW(), currY)) {
 			currX += 0.012;
 		}
-		currX = checkScreen(currX);
+		currX = checkRoom(currX);
 		updateX(currX);
 		currX = masterX;
 	}
@@ -144,32 +122,36 @@ void Game::action() {
 		if (currentroom == 1 && !bg1Wall->contains(currX, currY)) {
 			currX -= 0.012;
 		}
-		currX = checkScreen(currX);
+		currX = checkRoom(currX);
 		updateX(currX);
 		currX = masterX;
 	}
 
-
-
 	if (state == 4) {
-		if (currY < 0.3 && jumpState == 1) {
-			currY += 0.012;
+		if (currY < 0.2 && jumpState == 1) {
+			currY += 0.018;
 			updateY(currY);
 		}
-		else if (currY > -0.3 && jumpState == 2) {
-			currY -= 0.012;
+		else {
+			jumpState = 2;
+		}
+		if (currY > -0.375 && jumpState == 2) {
+			currY -= 0.018;
 			updateY(currY);
 		}
 		idleR->setY(currY);
 	}
 
 	if (state == 5) {
-		if (currY < 0.3 && jumpState == 1) {
-			currY += 0.012;
+		if (currY < 0.2 && jumpState == 1) {
+			currY += 0.018;
 			updateY(currY);
 		}
-		if (currY > -0.3 && jumpState == 2) {
-			currY -= 0.012;
+		else {
+			jumpState = 2;
+		}
+		if (currY > -0.375 && jumpState == 2) {
+			currY -= 0.018;
 			updateY(currY);
 		}
 		idleL->setY(currY);
@@ -177,10 +159,8 @@ void Game::action() {
 	glutPostRedisplay();
 }
 
-
-Game::~Game()
-{
-	delete  bg1;
+Game::~Game() {
+	delete bg1;
 	delete bg2;
 	delete Samus;
 	delete idleR;
