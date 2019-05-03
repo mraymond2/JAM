@@ -6,6 +6,8 @@
 
 class Game: private Timer{
 public:
+	float currX;
+	float currY;
 	int energy = 99;
 	int state = 0;
 	float masterX = -0.1;
