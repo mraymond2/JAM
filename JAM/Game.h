@@ -6,6 +6,9 @@
 
 class Game: private Timer{
 public:
+	
+	bool alreadyplayedbrinstar = false;
+	bool alreadyplayedmega = false;
 	bool samuscanbedamaged = true;
 	bool metroidalive = true;
 	//remove this later - actually dont
@@ -41,6 +44,8 @@ public:
 
  
 	Game();
+
+	void music();
 	void draw();
 	void handleDown(unsigned char key);
 	void handleUp(unsigned char key);

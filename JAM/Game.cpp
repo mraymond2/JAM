@@ -5,8 +5,7 @@
 #pragma comment(lib, "Winmm.lib")
 
 Game::Game() {
-	mciSendString("open \"../brinstardepths.mp3\" type mpegvideo alias mp3", NULL, 0, NULL);
-	mciSendString("play mp3 repeat", NULL, 0, NULL);
+	
 	Samus = new AnimatedRect("../IdleR.png", 1, 1, 65, true, true, masterX, masterY, idlemasterW, idlemasterH);
 	bg1 = new TexRect("../fight_room_background.png", -2, 1, 4, 2);
 	bg2 = new TexRect("../FusionMain3.png", -2, 1, 4, 2);
@@ -19,11 +18,11 @@ Game::Game() {
 	bg2Wall = new Rect(1.9, 1, 0.1, 2);
 	setRate(8);
 	start();
+	
 }
 
 void Game::draw() {
 	if (currentroom == 1) {
-		
 		masterX = -0.1;
 		masterY = -0.3;
 		bg1->draw(0);
@@ -33,6 +32,7 @@ void Game::draw() {
 		}
 	}
 	if (currentroom == 2) {
+		
 		masterX = -0.5;
 		masterY = -0.5;
 		bg2->draw(0);
@@ -51,6 +51,7 @@ void Game::draw() {
 	else if (state == 3) {
 		runL->draw(1);
 	}
+
 }
 
 void Game::handleDown(unsigned char key) {
@@ -72,6 +73,9 @@ void Game::handleDown(unsigned char key) {
 			state = 5;
 			jumpState = 1;
 		}
+	}
+	if (key == 'f') {
+		metroidalive = false;
 	}
 }
 void Game::handleUp(unsigned char key) {
@@ -102,17 +106,47 @@ void Game::updateY(float currY) {
 float Game::checkRoom(float currX) {
 	if (currX > 2) {
 		currentroom = 2;
+		music();
 		return (currX - 4);
 	}
 
 	if (currX < -2 - idleL->getW()) {
 		currentroom = 1;
+		music();
 		return (currX + 4);
 	}
 		else return currX;
+	
+	
+}
+
+void Game::music() {
+	if (currentroom == 1) {
+		if (alreadyplayedbrinstar == false) {
+
+			mciSendString("stop mp3", NULL, 0, NULL);
+			mciSendString("open \"../brinstardepths.mp3\" type mpegvideo alias mp3", NULL, 0, NULL);
+			mciSendString("play mp3", NULL, 0, NULL);
+			alreadyplayedbrinstar = true;
+
+		}
+	}
+	if (alreadyplayedbrinstar == true) {
+		if (alreadyplayedmega == false) {
+			if (currentroom == 2) {
+				mciSendString("close mp3", NULL, 0, NULL);
+				mciSendString("open \"../megalovania.mp3\" type mpegvideo alias mp3", NULL, 0, NULL);
+				mciSendString("play mp3", NULL, 0, NULL);
+				alreadyplayedmega = true;
+
+			}
+		}
+	}
 }
 
 void Game::action() {
+	music();
+
 	currX = runR->getX();
 	currY = runR->getY();
 
@@ -170,54 +204,57 @@ void Game::action() {
 		idleL->setY(currY);
 	}
 
-	float mx = Metroidspawn->getX();
-	float my = Metroidspawn->getY();
+	if (metroidalive) {
+		float mx = Metroidspawn->getX();
+		float my = Metroidspawn->getY();
 
-	if (left)
-		mx -= 0.01;
-	else
-		mx += 0.01;
+		if (left)
+			mx -= 0.01;
+		else
+			mx += 0.01;
 
-	if (mx < -1) {
-		left = false;
-	}
-	if (mx > 1.5 - Metroidspawn->getW()) {
-		left = true;
-	}
-
-	if (!up)
-		my -= 0.005;
-	else
-		my += 0.005;
-	if (my < -0.4) {
-		up = true;
-	}
-	
-	if (my > 0.5 - Metroidspawn->getH()) {
-		up = false;
-	}
-	
-
-	Metroidspawn->setX(mx);
-	Metroidspawn->setY(my);
-	
-	if (samuscanbedamaged) {
-		if (Metroidspawn->contains(currX + (idlemasterW / 2), currY - (idlemasterH / 3.7))) {
-			energy -=5;
-			samuscanbedamaged = false;
-			std::cout << "Samus got hit. Energy is: " << energy << std::endl;
+		if (mx < -1) {
+			left = false;
 		}
-	}
-	else
-		if (!Metroidspawn->contains(currX + (idlemasterW / 2), currY - (idlemasterH / 3.7))) {
-			samuscanbedamaged = true;
+		if (mx > 1.5 - Metroidspawn->getW()) {
+			left = true;
 		}
-	
+
+		if (!up)
+			my -= 0.005;
+		else
+			my += 0.005;
+		if (my < -0.4) {
+			up = true;
+		}
+
+		if (my > 0.5 - Metroidspawn->getH()) {
+			up = false;
+		}
+
+
+		Metroidspawn->setX(mx);
+		Metroidspawn->setY(my);
+
+		if (samuscanbedamaged) {
+			if (Metroidspawn->contains(currX + (idlemasterW / 2), currY - (idlemasterH / 3.7))) {
+				energy -= 5;
+				samuscanbedamaged = false;
+				std::cout << "Samus got hit. Energy is: " << energy << std::endl;
+			}
+		}
+		else
+			if (!Metroidspawn->contains(currX + (idlemasterW / 2), currY - (idlemasterH / 3.7))) {
+				samuscanbedamaged = true;
+			}
+	}
 
 	glutPostRedisplay();
 
 	
 }
+
+
 
 Game::~Game() {
 	delete bg1;
