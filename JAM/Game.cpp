@@ -131,13 +131,8 @@ void Game::music() {
 	}
 }
 
-
-void Game::action() {
-	music();
-
-	currX = runR->getX();
-	currY = runR->getY();
-
+void Game::samusMove(float currX, float currY) {
+	//run right
 	if (state == 2) {
 		if (currentroom == 1) {
 			currX += 0.012;
@@ -149,7 +144,7 @@ void Game::action() {
 		updateX(currX);
 		currX = masterX;
 	}
-
+	//run left
 	if (state == 3) {
 		if (currentroom == 2) {
 			currX -= 0.012;
@@ -161,7 +156,7 @@ void Game::action() {
 		updateX(currX);
 		currX = masterX;
 	}
-
+	//jump facing right
 	if (state == 4) {
 		if (currY < 0.2 && jumpState == 1) {
 			currY += 0.018;
@@ -176,7 +171,7 @@ void Game::action() {
 		}
 		idleR->setY(currY);
 	}
-
+	//jump facing left
 	if (state == 5) {
 		if (currY < 0.2 && jumpState == 1) {
 			currY += 0.018;
@@ -191,23 +186,22 @@ void Game::action() {
 		}
 		idleL->setY(currY);
 	}
+}
 
+void Game::metroid(float mx, float my) {
 	if (metroidalive == 1) {
-		float mx = Metroidspawn->getX();
-		float my = Metroidspawn->getY();
-
+		//left-right movement
 		if (left)
 			mx -= 0.01;
 		else
 			mx += 0.01;
-
 		if (mx < -1) {
 			left = false;
 		}
 		if (mx > 1.5 - Metroidspawn->getW()) {
 			left = true;
 		}
-
+		//up-down movement
 		if (!up)
 			my -= 0.005;
 		else
@@ -215,7 +209,6 @@ void Game::action() {
 		if (my < -0.4) {
 			up = true;
 		}
-
 		if (my > 0.5 - Metroidspawn->getH()) {
 			up = false;
 		}
@@ -237,6 +230,17 @@ void Game::action() {
 			}
 		}
 	}
+}
+
+void Game::action() {
+	currX = runR->getX();
+	currY = runR->getY();
+	float mx = Metroidspawn->getX();
+	float my = Metroidspawn->getY();
+	
+	music();
+	samusMove(currX, currY);
+	metroid(mx, my);
 
 	glutPostRedisplay();
 }

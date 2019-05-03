@@ -57,6 +57,8 @@ public:
 	void updateX(float currX);
 	void updateY(float currY);
 	float checkRoom(float currX);
+	void samusMove(float currX, float currY);
+	void metroid(float mx, float my);
 	void action();
 	~Game();
 };
