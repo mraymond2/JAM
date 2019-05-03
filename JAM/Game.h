@@ -52,10 +52,12 @@ public:
 	void draw();
 	void handleDown(unsigned char key);
 	void handleUp(unsigned char key);
-	void updateHealth(int energy);
+	// to be implemented void updateHealth(int energy);
 	void updateX(float currX);
 	void updateY(float currY);
 	float checkRoom(float currX);
+	void samusMove(float curX, float currY);
+	void metroid(float mx, float my);
 	void action();
 	~Game();
 };

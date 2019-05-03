@@ -6,9 +6,15 @@
 
 #pragma comment(lib, "Winmm.lib")
 
+#include "Game.h"
+
+#include <mmsystem.h>
+#include <mciapi.h>
+
+#pragma comment(lib, "Winmm.lib")
+
+
 Game::Game() {
-	
-	
 	Energytank = new AnimatedRect("../energytanksprite.png", 1, 3, 65, true, true, -1.975, .95, 0.2, 0.2);
 	Samus = new AnimatedRect("../IdleR.png", 1, 1, 65, true, true, masterX, masterY, idlemasterW, idlemasterH);
 	bg1 = new TexRect("../fight_room_background.png", -2, 1, 4, 2);
@@ -22,7 +28,6 @@ Game::Game() {
 	bg2Wall = new Rect(1.9, 1, 0.1, 2);
 	setRate(8);
 	start();
-	
 }
 
 void Game::draw() {
@@ -36,7 +41,6 @@ void Game::draw() {
 		}
 	}
 	if (currentroom == 2) {
-		
 		masterX = -0.5;
 		masterY = -0.5;
 		bg2->draw(0);
@@ -55,15 +59,7 @@ void Game::draw() {
 	else if (state == 3) {
 		runL->draw(1);
 	}
-
-	// I added some stuff for the energy tank here but It's not working
 	Energytank->draw(1);
-	std::string s = std::to_string(energy);
-	const char* c = s.c_str();
-	Energylevel = new TextBox(c, 0.5, 0.5);
-	Energylevel->draw();
-
-
 }
 
 void Game::handleDown(unsigned char key) {
@@ -77,7 +73,7 @@ void Game::handleDown(unsigned char key) {
 	}
 	if (key == ' ') {
 		//std::cout << "Jump" << std::endl;
-		if (state %2 == 0) {
+		if (state % 2 == 0) {
 			state = 4;
 			jumpState = 1;
 		}
@@ -104,7 +100,6 @@ void Game::updateX(float currX) {
 	idleR->setX(currX);
 	idleL->setX(currX);
 	runL->setX(currX);
-	
 }
 
 void Game::updateY(float currY) {
@@ -112,56 +107,42 @@ void Game::updateY(float currY) {
 	idleR->setY(currY);
 	idleL->setY(currY);
 	runL->setY(currY);
-	
 }
 
 float Game::checkRoom(float currX) {
 	if (currX > 2) {
 		currentroom = 2;
-		music();
 		return (currX - 4);
 	}
 
 	if (currX < -2 - idleL->getW()) {
 		currentroom = 1;
-		music();
 		return (currX + 4);
 	}
-		else return currX;
-	
-	
+	else return currX;
 }
 
 void Game::music() {
 	if (currentroom == 1) {
 		if (alreadyplayedbrinstar == false) {
-
-			mciSendString("stop mp3", NULL, 0, NULL);
+			mciSendString("close mp3", NULL, 0, NULL);
 			mciSendString("open \"../brinstardepths.mp3\" type mpegvideo alias mp3", NULL, 0, NULL);
 			mciSendString("play mp3", NULL, 0, NULL);
 			alreadyplayedbrinstar = true;
-
 		}
 	}
-	if (alreadyplayedbrinstar == true) {
-		if (alreadyplayedmega == false) {
-			if (currentroom == 2) {
-				mciSendString("close mp3", NULL, 0, NULL);
-				mciSendString("open \"../megalovania.mp3\" type mpegvideo alias mp3", NULL, 0, NULL);
-				mciSendString("play mp3", NULL, 0, NULL);
-				alreadyplayedmega = true;
-
-			}
+	if (currentroom == 2) {
+		if (alreadyplayedbrinstar == true && alreadyplayedmega == false) {
+			mciSendString("close mp3", NULL, 0, NULL);
+			mciSendString("open \"../megalovania.mp3\" type mpegvideo alias mp3", NULL, 0, NULL);
+			mciSendString("play mp3", NULL, 0, NULL);
+			alreadyplayedmega = true;
 		}
 	}
 }
 
-void Game::action() {
-	music();
-
-	currX = runR->getX();
-	currY = runR->getY();
-
+void Game::samusMove(float currX, float currY) {
+	//run right
 	if (state == 2) {
 		if (currentroom == 1) {
 			currX += 0.012;
@@ -173,7 +154,7 @@ void Game::action() {
 		updateX(currX);
 		currX = masterX;
 	}
-
+	//run left
 	if (state == 3) {
 		if (currentroom == 2) {
 			currX -= 0.012;
@@ -185,7 +166,7 @@ void Game::action() {
 		updateX(currX);
 		currX = masterX;
 	}
-
+	//jump facing right
 	if (state == 4) {
 		if (currY < 0.2 && jumpState == 1) {
 			currY += 0.018;
@@ -200,7 +181,7 @@ void Game::action() {
 		}
 		idleR->setY(currY);
 	}
-
+	//jump facing left
 	if (state == 5) {
 		if (currY < 0.2 && jumpState == 1) {
 			currY += 0.018;
@@ -215,23 +196,22 @@ void Game::action() {
 		}
 		idleL->setY(currY);
 	}
+}
 
-	if (metroidalive) {
-		float mx = Metroidspawn->getX();
-		float my = Metroidspawn->getY();
-
+void Game::metroid(float mx, float my) {
+	if (metroidalive == 1) {
+		//left-right movement
 		if (left)
 			mx -= 0.01;
 		else
 			mx += 0.01;
-
 		if (mx < -1) {
 			left = false;
 		}
 		if (mx > 1.5 - Metroidspawn->getW()) {
 			left = true;
 		}
-
+		//up-down movement
 		if (!up)
 			my -= 0.005;
 		else
@@ -239,7 +219,6 @@ void Game::action() {
 		if (my < -0.4) {
 			up = true;
 		}
-
 		if (my > 0.5 - Metroidspawn->getH()) {
 			up = false;
 		}
@@ -249,24 +228,32 @@ void Game::action() {
 		Metroidspawn->setY(my);
 
 		if (samuscanbedamaged) {
-			if (Metroidspawn->contains(currX + (idlemasterW / 2), currY - (idlemasterH / 3.7))) {
+			if (Metroidspawn->contains(idleR->getX() + (idlemasterW / 2), idleR->getY() - (idlemasterH / 3.7))) {
 				energy -= 5;
 				samuscanbedamaged = false;
 				std::cout << "Samus got hit. Energy is: " << energy << std::endl;
 			}
 		}
-		else
-			if (!Metroidspawn->contains(currX + (idlemasterW / 2), currY - (idlemasterH / 3.7))) {
+		else {
+			if (!Metroidspawn->contains(idleR->getX() + (idlemasterW / 2), idleR->getY() - (idlemasterH / 3.7))) {
 				samuscanbedamaged = true;
 			}
+		}
 	}
-
-	glutPostRedisplay();
-
-	
 }
 
+void Game::action() {
+	currX = runR->getX();
+	currY = runR->getY();
+	float mx = Metroidspawn->getX();
+	float my = Metroidspawn->getY();
 
+	music();
+	samusMove(currX, currY);
+	metroid(mx, my);
+
+	glutPostRedisplay();
+}
 
 Game::~Game() {
 	delete bg1;
@@ -278,4 +265,6 @@ Game::~Game() {
 	delete runL;
 	delete bg1Wall;
 	delete bg2Wall;
+	delete Metroidspawn;
 }
+
