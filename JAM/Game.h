@@ -24,6 +24,8 @@ public:
 	AnimatedRect* idleL;
 	AnimatedRect* runR;
 	AnimatedRect* runL;
+	Rect* bg1Wall;
+	Rect* bg2Wall;
 
  
 	Game();

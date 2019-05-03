@@ -13,14 +13,24 @@ void timer(int id) {
 
 
 	if (singleton->game->state == 2) {
-		currX += 0.012;
+		if (singleton->game->currentroom == 1) {
+			currX += 0.012;
+		}
+		if (singleton->game->currentroom == 2 && !singleton->game->bg2Wall->contains(currX + singleton->game->runR->getW(), currY)) {
+			currX += 0.012;
+		}
 		currX = singleton->game->checkScreen(currX);
 		singleton->game->updateX(currX);
 		currX = singleton->game->masterX;
 	}
 
 	if (singleton->game->state == 3) {
-		currX -= 0.012;
+		if (singleton->game->currentroom == 2) {
+			currX -= 0.012;
+		}
+		if (singleton->game->currentroom == 1 && !singleton->game->bg1Wall->contains(currX, currY)) {
+			currX -= 0.012;
+		}
 		currX = singleton->game->checkScreen(currX);
 		singleton->game->updateX(currX);
 		currX = singleton->game->masterX;
@@ -39,6 +49,7 @@ void timer(int id) {
 		}
 		singleton->game->idleR->setY(currY);
 	}
+
 	if (singleton->game->state == 5) {
 		if (currY < 0.3 && singleton->game->jumpState == 1) {
 			currY += 0.012;

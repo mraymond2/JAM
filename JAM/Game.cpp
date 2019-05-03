@@ -8,6 +8,8 @@ Game::Game() {
 	idleL = new AnimatedRect("/Users/Mason/Documents/CSE165/JAM/IdleL.png", 1, 1, 65, true, true, masterX, masterY, idlemasterW, idlemasterH);
 	runL = new AnimatedRect("/Users/Mason/Documents/CSE165/JAM/RunGunL.png", 1, 10, 65, true, true, masterX, masterY, runmasterW, runmasterLH);
 	runR = new AnimatedRect("/Users/Mason/Documents/CSE165/JAM/RunGunR.png", 1, 10, 65, true, true, masterX, masterY, runmasterW, runmasterRH);
+	bg1Wall = new Rect(-2.1, 1, 0.4, 2);
+	bg2Wall = new Rect(1.9, 1, 0.4, 2);
 }
 
 void Game::draw() {
@@ -15,11 +17,13 @@ void Game::draw() {
 		masterX = -0.1;
 		masterY = -0.3;
 		bg1->draw(0);
+		bg1Wall->draw();
 	}
 	if (currentroom == 2) {
 		masterX = -0.5;
 		masterY = -0.5;
 		bg2->draw(0);
+		bg2Wall->draw();
 	}
 
 	if (state == 0 || state == 4) {
@@ -41,9 +45,6 @@ void Game::handleDown(unsigned char key) {
 		//std::cout << "Move right" << std::endl;
 		state = 2;
 	}
-	if (key == 'j') {
-		state = 9;
-	}
 	if (key == 'a') {
 		//std::cout << "Move left" << std::endl;
 		state = 3;
@@ -63,12 +64,6 @@ void Game::handleDown(unsigned char key) {
 void Game::handleUp(unsigned char key) {
 	if (key == 'd') {
 		state = 0;
-	}
-	if (key == 'c') {
-		currentroom = 2;
-	}
-	if (key == 'v') {
-		currentroom = 1;
 	}
 	if (key == 'a') {
 		state = 1;
@@ -100,19 +95,14 @@ void Game::updateY(float currY) {
 }
 
 float Game::checkScreen(float currX) {
-	if (currX > 0){
-		if (currX > 2) {
-			currentroom = 2;
-			return (currX - 4);
-		}
-		else return currX;
+	if (currX > 2) {
+		currentroom = 2;
+		return (currX - 4);
 	}
-	else if (currX < 0) {
-		if (currX < -2 - idleL->getW()) {
-			currentroom = 1;
-			return (currX + 4);
-		}
-		else return currX;
+
+	if (currX < -2 - idleL->getW()) {
+		currentroom = 1;
+		return (currX + 4);
 	}
-	
+		else return currX;
 }
