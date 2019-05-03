@@ -1,11 +1,12 @@
 #include "Game.h"
+
 #include <mmsystem.h>
 #include <mciapi.h>
 
 #pragma comment(lib, "Winmm.lib")
 
+
 Game::Game() {
-	
 	Samus = new AnimatedRect("../IdleR.png", 1, 1, 65, true, true, masterX, masterY, idlemasterW, idlemasterH);
 	bg1 = new TexRect("../fight_room_background.png", -2, 1, 4, 2);
 	bg2 = new TexRect("../FusionMain3.png", -2, 1, 4, 2);
@@ -18,7 +19,6 @@ Game::Game() {
 	bg2Wall = new Rect(1.9, 1, 0.1, 2);
 	setRate(8);
 	start();
-	
 }
 
 void Game::draw() {
@@ -32,7 +32,6 @@ void Game::draw() {
 		}
 	}
 	if (currentroom == 2) {
-		
 		masterX = -0.5;
 		masterY = -0.5;
 		bg2->draw(0);
@@ -51,7 +50,6 @@ void Game::draw() {
 	else if (state == 3) {
 		runL->draw(1);
 	}
-
 }
 
 void Game::handleDown(unsigned char key) {
@@ -92,7 +90,6 @@ void Game::updateX(float currX) {
 	idleR->setX(currX);
 	idleL->setX(currX);
 	runL->setX(currX);
-	
 }
 
 void Game::updateY(float currY) {
@@ -100,49 +97,40 @@ void Game::updateY(float currY) {
 	idleR->setY(currY);
 	idleL->setY(currY);
 	runL->setY(currY);
-	
 }
 
 float Game::checkRoom(float currX) {
 	if (currX > 2) {
 		currentroom = 2;
-		music();
 		return (currX - 4);
 	}
 
 	if (currX < -2 - idleL->getW()) {
 		currentroom = 1;
-		music();
 		return (currX + 4);
 	}
 		else return currX;
-	
-	
 }
 
 void Game::music() {
 	if (currentroom == 1) {
 		if (alreadyplayedbrinstar == false) {
-
-			mciSendString("stop mp3", NULL, 0, NULL);
+			mciSendString("close mp3", NULL, 0, NULL);
 			mciSendString("open \"../brinstardepths.mp3\" type mpegvideo alias mp3", NULL, 0, NULL);
 			mciSendString("play mp3", NULL, 0, NULL);
 			alreadyplayedbrinstar = true;
-
 		}
 	}
-	if (alreadyplayedbrinstar == true) {
-		if (alreadyplayedmega == false) {
-			if (currentroom == 2) {
-				mciSendString("close mp3", NULL, 0, NULL);
-				mciSendString("open \"../megalovania.mp3\" type mpegvideo alias mp3", NULL, 0, NULL);
-				mciSendString("play mp3", NULL, 0, NULL);
-				alreadyplayedmega = true;
-
-			}
+	if (currentroom == 2) {
+		if (alreadyplayedbrinstar == true && alreadyplayedmega == false) {
+			mciSendString("close mp3", NULL, 0, NULL);
+			mciSendString("open \"../megalovania.mp3\" type mpegvideo alias mp3", NULL, 0, NULL);
+			mciSendString("play mp3", NULL, 0, NULL);
+			alreadyplayedmega = true;
 		}
 	}
 }
+
 
 void Game::action() {
 	music();
@@ -204,7 +192,7 @@ void Game::action() {
 		idleL->setY(currY);
 	}
 
-	if (metroidalive) {
+	if (metroidalive == 1) {
 		float mx = Metroidspawn->getX();
 		float my = Metroidspawn->getY();
 
@@ -237,24 +225,21 @@ void Game::action() {
 		Metroidspawn->setY(my);
 
 		if (samuscanbedamaged) {
-			if (Metroidspawn->contains(currX + (idlemasterW / 2), currY - (idlemasterH / 3.7))) {
+			if (Metroidspawn->contains(idleR->getX() + (idlemasterW / 2), idleR->getY() - (idlemasterH / 3.7))) {
 				energy -= 5;
 				samuscanbedamaged = false;
 				std::cout << "Samus got hit. Energy is: " << energy << std::endl;
 			}
 		}
-		else
-			if (!Metroidspawn->contains(currX + (idlemasterW / 2), currY - (idlemasterH / 3.7))) {
+		else {
+			if (!Metroidspawn->contains(idleR->getX() + (idlemasterW / 2), idleR->getY() - (idlemasterH / 3.7))) {
 				samuscanbedamaged = true;
 			}
+		}
 	}
 
 	glutPostRedisplay();
-
-	
 }
-
-
 
 Game::~Game() {
 	delete bg1;
@@ -266,4 +251,5 @@ Game::~Game() {
 	delete runL;
 	delete bg1Wall;
 	delete bg2Wall;
+	delete Metroidspawn;
 }
