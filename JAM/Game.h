@@ -2,6 +2,7 @@
 #ifndef Game_h
 #define Game_h
 
+#include "TextBox.h"
 #include "AnimatedRect.h"
 
 class Game: private Timer{
@@ -31,6 +32,8 @@ public:
 	int jumpState = 0;
 	int currentroom = 1;
 
+	TextBox* Energylevel;
+	AnimatedRect* Energytank;
 	TexRect* bg1;
 	TexRect* bg2;
 	AnimatedRect* Samus;
@@ -49,6 +52,7 @@ public:
 	void draw();
 	void handleDown(unsigned char key);
 	void handleUp(unsigned char key);
+	void updateHealth(int energy);
 	void updateX(float currX);
 	void updateY(float currY);
 	float checkRoom(float currX);

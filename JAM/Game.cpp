@@ -1,11 +1,15 @@
 #include "Game.h"
 #include <mmsystem.h>
 #include <mciapi.h>
+#include <deque>
+#include <string>
 
 #pragma comment(lib, "Winmm.lib")
 
 Game::Game() {
 	
+	
+	Energytank = new AnimatedRect("../energytanksprite.png", 1, 3, 65, true, true, -1.975, .95, 0.2, 0.2);
 	Samus = new AnimatedRect("../IdleR.png", 1, 1, 65, true, true, masterX, masterY, idlemasterW, idlemasterH);
 	bg1 = new TexRect("../fight_room_background.png", -2, 1, 4, 2);
 	bg2 = new TexRect("../FusionMain3.png", -2, 1, 4, 2);
@@ -51,6 +55,14 @@ void Game::draw() {
 	else if (state == 3) {
 		runL->draw(1);
 	}
+
+	// I added some stuff for the energy tank here but It's not working
+	Energytank->draw(1);
+	std::string s = std::to_string(energy);
+	const char* c = s.c_str();
+	Energylevel = new TextBox(c, 0.5, 0.5);
+	Energylevel->draw();
+
 
 }
 

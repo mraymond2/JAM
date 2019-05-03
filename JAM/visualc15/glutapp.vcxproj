@@ -122,6 +122,7 @@
     <ClCompile Include="..\GlutApp.cpp" />
     <ClCompile Include="..\Rect.cpp" />
     <ClCompile Include="..\TexRect.cpp" />
+    <ClCompile Include="..\TextBox.cpp" />
     <ClCompile Include="..\Timer.cpp" />
     <ClCompile Include="..\windows\image_DXT.c" />
     <ClCompile Include="..\windows\image_helper.c" />
@@ -143,6 +144,7 @@
     <ClInclude Include="..\windows\stbi_DDS_aug.h" />
     <ClInclude Include="..\windows\stbi_DDS_aug_c.h" />
     <ClInclude Include="..\windows\stb_image_aug.h" />
+    <ClInclude Include="TextBox.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
