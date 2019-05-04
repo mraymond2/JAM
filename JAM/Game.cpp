@@ -45,8 +45,9 @@ void Game::draw() {
 		masterX = -0.5;
 		masterY = -0.5;
 		bg2->draw(0);
-		bg1Wall->draw();
+		
 		bg2Wall->draw();
+		bg1Wall->draw();
 		if (angeloalive) {
 			Angelo->draw(1);
 		}
