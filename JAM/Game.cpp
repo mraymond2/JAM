@@ -45,9 +45,9 @@ void Game::draw() {
 		masterX = -0.5;
 		masterY = -0.5;
 		bg2->draw(0);
-		
-		bg2Wall->draw();
 		bg1Wall->draw();
+		bg2Wall->draw();
+		
 		if (angeloalive) {
 			Angelo->draw(1);
 		}
@@ -176,7 +176,7 @@ void Game::samusMove(float currX, float currY) {
 	}
 	//run left
 	if (state == 3) {
-		if (currentroom == 2) {
+		if (currentroom == 2 && !bg1Wall->contains(currX, currY)) {
 			currX -= 0.012;
 		}
 		if (currentroom == 1 && !bg1Wall->contains(currX, currY)) {
