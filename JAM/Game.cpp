@@ -263,6 +263,7 @@ void Game::metroid(float mx, float my) {
 }
 
 void Game::angelo(float mx, float my) {
+	//left-right movement
 	if (left)
 		mx -= 0.01;
 	else
@@ -317,5 +318,8 @@ Game::~Game() {
 	delete bg1Wall;
 	delete bg2Wall;
 	delete Metroidspawn;
+	delete Angelo;
+	delete Energytank;
+
 }
 

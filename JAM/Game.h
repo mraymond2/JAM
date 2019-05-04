@@ -6,40 +6,7 @@
 #include "AnimatedRect.h"
 
 class Game: private Timer{
-public:
-	
-
-	int angelohealth = 200;
-	bool change = false;
-	bool angeloalive = true;
-	bool alreadyplayedbrinstar = false;
-	bool alreadyplayedmega = false;
-	bool samuscanbedamaged = true;
-	bool metroidalive = true;
-	//remove this later - actually dont
-	bool metroidattacking = false;
-	bool up = true;
-	bool left = true;
-	bool angleft = true;
-	bool angup = true;
-	float currX = 0;
-	float currY = 0;
-	float metroidX = 0.7;
-	float metroidY = 0.5;
-	int energy = 99;
-	int state = 0;
-	float masterX = -0.1;
-	float masterY = -0.375;
-	float idlemasterW = 0.2;
-	float idlemasterH = 0.39;
-	float runmasterW = 0.25;
-	float runmasterLH = 0.415;
-	float runmasterRH = 0.395;
-	int jumpState = 0;
-	int currentroom = 1;
-
-	
-	TextBox* Energylevel;
+	//TextBox* Energylevel;
 	AnimatedRect* Angelo;
 	AnimatedRect* Energytank;
 	TexRect* bg1;
@@ -53,9 +20,42 @@ public:
 	Rect* bg2Wall;
 	AnimatedRect* Metroidspawn;
 
- 
-	Game();
+	float masterX = -0.1;
+	float masterY = -0.375;
+	float idlemasterW = 0.2;
+	float idlemasterH = 0.39;
+	float runmasterW = 0.25;
+	float runmasterLH = 0.415;
+	float runmasterRH = 0.395;
 
+public:
+	//samus
+	float currX = 0;
+	float currY = 0;
+	int energy = 99;
+	int state = 0;
+	int jumpState = 0;
+	int currentroom = 1;
+	//angelo
+	int angelohealth = 200;
+	bool change = false;
+	bool angeloalive = true;
+	bool angleft = true;
+	bool angup = true;
+	//music
+	bool alreadyplayedbrinstar = false;
+	bool alreadyplayedmega = false;
+	//metroid
+	bool samuscanbedamaged = true;
+	bool metroidalive = true;
+	bool metroidattacking = false;
+	bool up = true;
+	bool left = true;
+	float metroidX = 0.7;
+	float metroidY = 0.5;
+
+
+	Game();
 	void music();
 	void draw();
 	void handleDown(unsigned char key);
