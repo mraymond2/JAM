@@ -15,8 +15,13 @@
 
 
 Game::Game() {
+	Energylevel = new TextBox("Energy:", -1.97, .87, GLUT_BITMAP_HELVETICA_18, 1, 1, 1, 500);
+	Energytank1 = new AnimatedRect("../energytanksprite.png", 1, 3, 65, true, true, -1.7, .94, 0.1, 0.1);
+	Energytank2 = new AnimatedRect("../energytanksprite.png", 1, 3, 65, true, true, -1.59, .94, 0.1, 0.1);
+	Energytank3 = new AnimatedRect("../energytanksprite.png", 1, 3, 65, true, true, -1.48, .94, 0.1, 0.1);
+	Energytank4 = new AnimatedRect("../energytanksprite.png", 1, 3, 65, true, true, -1.37, .94, 0.1, 0.1);
+	Energytank5 = new AnimatedRect("../energytanksprite.png", 1, 3, 65, true, true, -1.26, .94, 0.1, 0.1);
 	Angelo = new AnimatedRect("../angelo.png", 1, 1, 65, true, true, 0.7, 0.5, 0.45, 0.45);
-	Energytank = new AnimatedRect("../energytanksprite.png", 1, 3, 65, true, true, -1.975, .95, 0.2, 0.2);
 	Samus = new AnimatedRect("../IdleR.png", 1, 1, 65, true, true, masterX, masterY, idlemasterW, idlemasterH);
 	bg1 = new TexRect("../fight_room_background.png", -2, 1, 4, 2);
 	bg2 = new TexRect("../FusionMain3.png", -2, 1, 4, 2);
@@ -32,6 +37,7 @@ Game::Game() {
 }
 
 void Game::draw() {
+	Energylevel->draw();
 	if (currentroom == 1) {
 		masterX = -0.1;
 		masterY = -0.3;
@@ -65,7 +71,16 @@ void Game::draw() {
 	else if (state == 3) {
 		runL->draw(1);
 	}
-	Energytank->draw(1);
+	//if (energy > 1)
+		Energytank1->draw(1);
+	//if (energy > 10)
+		Energytank2->draw(1);
+	//if (energy > 20)
+		Energytank3->draw(1);
+	//if (energy > 30)
+		Energytank4->draw(1);
+	//if (energy > 40)
+		Energytank5->draw(1);
 
 	
 }
@@ -319,7 +334,12 @@ Game::~Game() {
 	delete bg2Wall;
 	delete Metroidspawn;
 	delete Angelo;
-	delete Energytank;
+	delete Energytank1;
+	delete Energytank2;
+	delete Energytank3;
+	delete Energytank4;
+	delete Energytank5;
+	delete Energylevel;
 
 }
 

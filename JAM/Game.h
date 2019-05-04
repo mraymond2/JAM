@@ -6,9 +6,13 @@
 #include "AnimatedRect.h"
 
 class Game: private Timer{
-	//TextBox* Energylevel;
+	TextBox* Energylevel;
 	AnimatedRect* Angelo;
-	AnimatedRect* Energytank;
+	AnimatedRect* Energytank1;
+	AnimatedRect* Energytank2;
+	AnimatedRect* Energytank3;
+	AnimatedRect* Energytank4;
+	AnimatedRect* Energytank5;
 	TexRect* bg1;
 	TexRect* bg2;
 	AnimatedRect* Samus;
