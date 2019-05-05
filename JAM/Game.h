@@ -2,10 +2,13 @@
 #ifndef Game_h
 #define Game_h
 
+#include "RightTriangle.h"
 #include "TextBox.h"
 #include "AnimatedRect.h"
 
 class Game: private Timer{
+	RightTriangle* triangle;
+	RightTriangle* triangle2;
 	TextBox* Energylevel;
 	AnimatedRect* Angelo;
 	AnimatedRect* Energytank1;
@@ -23,7 +26,7 @@ class Game: private Timer{
 	Rect* bg1Wall;
 	Rect* bg2Wall;
 	AnimatedRect* Metroidspawn;
-	AnimatedRect* GameOver;
+	//AnimatedRect* GameOver;
 
 	float masterX = -0.1;
 	float masterY = -0.375;

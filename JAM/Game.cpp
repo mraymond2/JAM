@@ -3,6 +3,9 @@
 #include <mciapi.h>
 #include <deque>
 #include <string>
+#include <cmath>
+
+#define PI 3.1415926
 
 #pragma comment(lib, "Winmm.lib")
 
@@ -15,6 +18,9 @@
 
 
 Game::Game() {
+	triangle = new RightTriangle(-1.6, -0.5, 0.7, 0.25);
+	triangle2 = new RightTriangle(-1.11, -0.745, 0.53, 0.21);
+
 	Energylevel = new TextBox("Energy:", -1.97, .87, GLUT_BITMAP_HELVETICA_18, 1, 1, 1, 500);
 	Energytank1 = new AnimatedRect("../energytanksprite.png", 1, 3, 65, true, true, -1.7, .94, 0.1, 0.1);
 	Energytank2 = new AnimatedRect("../energytanksprite.png", 1, 3, 65, true, true, -1.59, .94, 0.1, 0.1);
@@ -32,7 +38,7 @@ Game::Game() {
 	Metroidspawn = new AnimatedRect("../ms1.png", 2, 5, 65, true, true, 0.7, 0.5, 0.3, 0.3);
 	bg1Wall = new Rect(-2, 1, 0.4, 2);
 	bg2Wall = new Rect(1.9, 1, 0.1, 2);
-	GameOver = new AnimatedRect("../gameoversheet.png", 10, 8, 100, true , true, -2, 1, 4, 2);
+	//GameOver = new AnimatedRect("../gameoversheet.png", 10, 8, 100, true , true, -2, 1, 4, 2);
 	setRate(8);
 	start();
 }
@@ -42,6 +48,7 @@ void Game::draw() {
 	if (energy > 0) {
 	Energylevel->draw();
 	if (currentroom == 1) {
+		triangle->draw();
 		masterX = -0.1;
 		masterY = -0.3;
 		bg1->draw(0);
@@ -90,7 +97,7 @@ void Game::draw() {
 		}
 	}
 	if (energy < 0) {
-		GameOver->draw(1);
+		//GameOver->draw(1);
 	}
 	
 }
@@ -195,9 +202,17 @@ void Game::samusMove(float currX, float currY) {
 	if (state == 2) {
 		if (currentroom == 1) {
 			currX += 0.012;
+			if (currX < -0.95 && currX > -1.6) {
+				currY = masterY + 0.15 - ((tan((19.654 * PI) / 180) * (currX + 1.6)));
+				updateY(currY);
+			}
 		}
 		if (currentroom == 2 && !bg2Wall->contains(currX + runR->getW(), currY)) {
 			currX += 0.012;
+			if (currX < -0.65 && currX > -1.11) {
+				currY = masterY + 0.1 - ((tan((21.615 * PI) / 180) * (currX + 1.11)));
+				updateY(currY);
+			}
 		}
 		currX = checkRoom(currX);
 		updateX(currX);
@@ -205,11 +220,19 @@ void Game::samusMove(float currX, float currY) {
 	}
 	//run left
 	if (state == 3) {
-		if (currentroom == 2 && !bg1Wall->contains(currX, currY)) {
-			currX -= 0.012;
-		}
 		if (currentroom == 1 && !bg1Wall->contains(currX, currY)) {
 			currX -= 0.012;
+			if (currX < -0.9 && currX > -1.65) {
+				currY = (-1 * (tan((19.654 * PI) / 180) * (currX + 0.9))) + masterY - 0.1;
+				updateY(currY);
+			}
+		}
+		if (currentroom == 2 && !bg1Wall->contains(currX, currY)) {
+			currX -= 0.012;
+			if (currX < -0.65 && currX > -1.2) {
+				currY = (-1 * (tan((21.615 * PI) / 180) * (currX + 0.58))) + masterY - 0.12;
+				updateY(currY);
+			}
 		}
 		currX = checkRoom(currX);
 		updateX(currX);
@@ -337,6 +360,8 @@ void Game::action() {
 }
 
 Game::~Game() {
+	delete triangle;
+	delete triangle2;
 	delete bg1;
 	delete bg2;
 	delete Samus;
@@ -354,7 +379,7 @@ Game::~Game() {
 	delete Energytank4;
 	delete Energytank5;
 	delete Energylevel;
-	delete GameOver;
+	//delete GameOver;
 
 }
 
