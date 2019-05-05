@@ -32,11 +32,14 @@ Game::Game() {
 	Metroidspawn = new AnimatedRect("../ms1.png", 2, 5, 65, true, true, 0.7, 0.5, 0.3, 0.3);
 	bg1Wall = new Rect(-2, 1, 0.4, 2);
 	bg2Wall = new Rect(1.9, 1, 0.1, 2);
+	GameOver = new AnimatedRect("../gameoversheet.png", 10, 8, 100, true , true, -2, 1, 4, 2);
 	setRate(8);
 	start();
 }
 
 void Game::draw() {
+	
+	if (energy > 0) {
 	Energylevel->draw();
 	if (currentroom == 1) {
 		masterX = -0.1;
@@ -71,27 +74,36 @@ void Game::draw() {
 	else if (state == 3) {
 		runL->draw(1);
 	}
-	//if (energy > 1)
+	
 		Energytank1->draw(1);
-	//if (energy > 10)
-		Energytank2->draw(1);
-	//if (energy > 20)
-		Energytank3->draw(1);
-	//if (energy > 30)
-		Energytank4->draw(1);
-	//if (energy > 40)
-		Energytank5->draw(1);
-
+		if (energy > 1) {
+			Energytank2->draw(1);
+			if (energy > 2) {
+				Energytank3->draw(1);
+				if (energy > 3) {
+					Energytank4->draw(1);
+					if (energy > 4) {
+						Energytank5->draw(1);
+					}
+				}
+			}
+		}
+	}
+	if (energy < 0) {
+		GameOver->draw(1);
+	}
 	
 }
 
 void Game::handleDown(unsigned char key) {
 	if (key == 'd') {
 		//std::cout << "Move right" << std::endl;
+		lookingLeft = false;
 		state = 2;
 	}
 	if (key == 'a') {
 		//std::cout << "Move left" << std::endl;
+		lookingLeft = true;
 		state = 3;
 	}
 	if (key == ' ') {
@@ -172,6 +184,8 @@ void Game::music() {
 			alreadyplayedmega = true;
 		}
 	}
+
+
 }
 
 
@@ -264,7 +278,7 @@ void Game::metroid(float mx, float my) {
 
 		if (samuscanbedamaged) {
 			if (Metroidspawn->contains(idleR->getX() + (idlemasterW / 2), idleR->getY() - (idlemasterH / 3.7))) {
-				energy -= 5;
+				energy -= 1;
 				samuscanbedamaged = false;
 				std::cout << "Samus got hit. Energy is: " << energy << std::endl;
 			}
@@ -340,6 +354,7 @@ Game::~Game() {
 	delete Energytank4;
 	delete Energytank5;
 	delete Energylevel;
+	delete GameOver;
 
 }
 

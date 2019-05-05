@@ -2,46 +2,51 @@
 D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\AnimatedRect.cpp(75): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\AnimatedRect.cpp(76): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   App.cpp
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(27): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(28): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(30): warning C4305: 'initializing': truncation from 'double' to 'float'
 D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(31): warning C4305: 'initializing': truncation from 'double' to 'float'
 D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(33): warning C4305: 'initializing': truncation from 'double' to 'float'
 D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(34): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(36): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(37): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(62): warning C4305: 'initializing': truncation from 'double' to 'float'
   Game.cpp
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(27): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(28): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(30): warning C4305: 'initializing': truncation from 'double' to 'float'
 D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(31): warning C4305: 'initializing': truncation from 'double' to 'float'
 D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(33): warning C4305: 'initializing': truncation from 'double' to 'float'
 D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(34): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(36): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(37): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(62): warning C4305: 'initializing': truncation from 'double' to 'float'
 D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(18): warning C4305: 'argument': truncation from 'double' to 'float'
 D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(19): warning C4305: 'argument': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(27): warning C4305: 'argument': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(28): warning C4305: 'argument': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(29): warning C4305: 'argument': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(36): warning C4305: '=': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(37): warning C4305: '=': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(102): warning C4553: '==': result of expression not used; did you intend '='?
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(133): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(168): warning C4305: '+=': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(171): warning C4305: '+=': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(180): warning C4305: '-=': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(183): warning C4305: '-=': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(192): warning C4305: '+=': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(199): warning C4305: '-=': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(207): warning C4305: '+=': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(214): warning C4305: '-=': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(225): warning C4305: '-=': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(227): warning C4305: '+=': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(236): warning C4305: '-=': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(238): warning C4305: '+=': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(251): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(258): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(267): warning C4305: '-=': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(269): warning C4305: '+=': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(278): warning C4305: '-=': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(280): warning C4305: '+=': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(20): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(21): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(22): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(23): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(24): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(32): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(33): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(34): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(46): warning C4305: '=': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(47): warning C4305: '=': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(130): warning C4553: '==': result of expression not used; did you intend '='?
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(161): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(198): warning C4305: '+=': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(201): warning C4305: '+=': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(210): warning C4305: '-=': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(213): warning C4305: '-=': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(222): warning C4305: '+=': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(229): warning C4305: '-=': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(237): warning C4305: '+=': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(244): warning C4305: '-=': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(255): warning C4305: '-=': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(257): warning C4305: '+=': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(266): warning C4305: '-=': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(268): warning C4305: '+=': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(281): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(288): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(298): warning C4305: '-=': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(300): warning C4305: '+=': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(309): warning C4305: '-=': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(311): warning C4305: '+=': truncation from 'double' to 'float'
   GlutApp.cpp
   Rect.cpp
   TexRect.cpp
@@ -49,12 +54,12 @@ D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.cpp(280): warning C4305: '+=': 
 D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\TextBox.cpp(29): warning C4018: '<': signed/unsigned mismatch
   Timer.cpp
   app_main.cpp
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(27): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(28): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(30): warning C4305: 'initializing': truncation from 'double' to 'float'
 D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(31): warning C4305: 'initializing': truncation from 'double' to 'float'
 D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(33): warning C4305: 'initializing': truncation from 'double' to 'float'
 D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(34): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(36): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(37): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\Game.h(62): warning C4305: 'initializing': truncation from 'double' to 'float'
   Generating Code...
   SOIL.c
 D:\Schoolwork\CSE165\MetroidProject\JAM\JAM\windows\SOIL.c(1719): warning C4018: '<=': signed/unsigned mismatch

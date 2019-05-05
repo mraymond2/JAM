@@ -23,6 +23,7 @@ class Game: private Timer{
 	Rect* bg1Wall;
 	Rect* bg2Wall;
 	AnimatedRect* Metroidspawn;
+	AnimatedRect* GameOver;
 
 	float masterX = -0.1;
 	float masterY = -0.375;
@@ -36,10 +37,13 @@ public:
 	//samus
 	float currX = 0;
 	float currY = 0;
-	int energy = 99;
+	int energy = 5;
 	int state = 0;
 	int jumpState = 0;
 	int currentroom = 1;
+	bool samusAlive = true;
+	bool Grounded = true;
+	bool lookingLeft = false;
 	//angelo
 	int angelohealth = 200;
 	bool change = false;
