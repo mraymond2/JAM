@@ -25,6 +25,9 @@ class Game: private Timer{
 	AnimatedRect* runL;
 	Rect* bg1Wall;
 	Rect* bg2Wall;
+	Rect* ground1;
+	Rect* ground2;
+	Rect* ground3;
 	AnimatedRect* Metroidspawn;
 	//AnimatedRect* GameOver;
 
