@@ -121,6 +121,7 @@
     <ClCompile Include="..\Game.cpp" />
     <ClCompile Include="..\GlutApp.cpp" />
     <ClCompile Include="..\Rect.cpp" />
+    <ClCompile Include="..\RightTriangle.cpp" />
     <ClCompile Include="..\TexRect.cpp" />
     <ClCompile Include="..\TextBox.cpp" />
     <ClCompile Include="..\Timer.cpp" />
@@ -135,6 +136,7 @@
     <ClInclude Include="..\Game.h" />
     <ClInclude Include="..\GlutApp.h" />
     <ClInclude Include="..\Rect.h" />
+    <ClInclude Include="..\RightTriangle.h" />
     <ClInclude Include="..\Shape.h" />
     <ClInclude Include="..\TexRect.h" />
     <ClInclude Include="..\Timer.h" />

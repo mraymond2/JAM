@@ -5,8 +5,11 @@
 #include "RightTriangle.h"
 #include "TextBox.h"
 #include "AnimatedRect.h"
+#include <vector>
 
 class Game: private Timer{
+	std::vector<TexRect*> rightbullets;
+	std::vector<TexRect*> leftbullets;
 	RightTriangle* triangle;
 	RightTriangle* triangle2;
 	TextBox* Energylevel;

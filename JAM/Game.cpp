@@ -4,6 +4,7 @@
 #include <deque>
 #include <string>
 #include <cmath>
+#include <vector>
 
 #define PI 3.1415926
 
@@ -17,10 +18,12 @@
 #pragma comment(lib, "Winmm.lib")
 
 
+
+
 Game::Game() {
 	triangle = new RightTriangle(-1.6, -0.5, 0.7, 0.25);
 	triangle2 = new RightTriangle(-1.11, -0.745, 0.53, 0.21);
-
+	
 	Energylevel = new TextBox("Energy:", -1.97, .87, GLUT_BITMAP_HELVETICA_18, 1, 1, 1, 500);
 	Energytank1 = new AnimatedRect("../energytanksprite.png", 1, 3, 65, true, true, -1.7, .94, 0.1, 0.1);
 	Energytank2 = new AnimatedRect("../energytanksprite.png", 1, 3, 65, true, true, -1.59, .94, 0.1, 0.1);
@@ -39,6 +42,7 @@ Game::Game() {
 	bg1Wall = new Rect(-2, 1, 0.4, 2);
 	bg2Wall = new Rect(1.9, 1, 0.1, 2);
 	//GameOver = new AnimatedRect("../gameoversheet.png", 10, 8, 100, true , true, -2, 1, 4, 2);
+	//GameOver->playOnce();
 	setRate(8);
 	start();
 }
@@ -70,16 +74,16 @@ void Game::draw() {
 	}
 
 	if (state == 0) {
-		idleR->draw(1);
+		idleR->draw(0.75);
 	}
 	else if (state == 1) {
-		idleL->draw(1);
+		idleL->draw(0.75);
 	}
 	else if (state == 2) {
-		runR->draw(1);
+		runR->draw(0.75);
 	}
 	else if (state == 3) {
-		runL->draw(1);
+		runL->draw(0.75);
 	}
 	
 		Energytank1->draw(1);
@@ -98,6 +102,13 @@ void Game::draw() {
 	}
 	if (energy < 0) {
 		//GameOver->draw(1);
+		
+	}
+	for (std::vector<TexRect*>::iterator i = rightbullets.begin(); i != rightbullets.end(); ++i) {
+		(*i)->draw(1);
+	}
+	for (std::vector<TexRect*>::iterator i = leftbullets.begin(); i != leftbullets.end(); ++i) {
+		(*i)->draw(1);
 	}
 	
 }
@@ -113,10 +124,19 @@ void Game::handleDown(unsigned char key) {
 		lookingLeft = true;
 		state = 3;
 	}
-	if (key == ' ' && jump == false) {
+	if (key == 'w' && jump == false) {
 		//std::cout << "Jump" << std::endl;
 		jump = true;
 		jumpState = 1;
+	}
+
+	if (key == ' ') {
+		if (state == 2 || state == 0) {
+			rightbullets.push_back(new TexRect("../bulletcircle.png", currX, (currY - 0.1), 0.1, 0.1));
+		}
+		if (state == 3 || state == 1) {
+			leftbullets.push_back(new TexRect("../bulletcircle.png", currX, (currY - 0.1), 0.1, 0.1));
+		}
 	}
 
 	if (key == 'f') {
@@ -327,6 +347,17 @@ void Game::angelo(float mx, float my) {
 }
 
 void Game::action() {
+	for (std::vector<TexRect*>::iterator i = leftbullets.begin(); i != leftbullets.end(); ++i) {
+		if (state == 3 || state == 1) {
+			(*i)->setX((*i)->getX() - .085);
+		}
+	}
+	for (std::vector<TexRect*>::iterator i = rightbullets.begin(); i != rightbullets.end(); ++i) {
+			if (state == 2 || state == 0) {
+				(*i)->setX((*i)->getX() + .085);
+			}
+	}
+	
 	currX = runR->getX();
 	currY = runR->getY();
 	float mx = Metroidspawn->getX();
