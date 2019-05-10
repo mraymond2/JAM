@@ -38,19 +38,17 @@ Game::Game() {
 	Metroidspawn = new AnimatedRect("../ms1.png", 2, 5, 65, true, true, 0.7, 0.5, 0.3, 0.3);
 	bg1Wall = new Rect(-2, 1, 0.4, 2);
 	bg2Wall = new Rect(1.9, 1, 0.1, 2);
-	ground1 = new Rect(-2, -0.75, 4, 0.250);
-	ground2 = new Rect(-2, -0.75, 0.90, 0.250);
-	ground3 = new Rect(-1.25, -0.95, 4, 0.1);
 	//GameOver = new AnimatedRect("../gameoversheet.png", 10, 8, 100, true , true, -2, 1, 4, 2);
 	setRate(8);
 	start();
 }
 
 void Game::draw() {
+	
 	if (energy > 0) {
 	Energylevel->draw();
 	if (currentroom == 1) {
-		ground1->draw();
+		//triangle->draw();
 		masterX = -0.1;
 		masterY = -0.3;
 		bg1->draw(0);
@@ -62,8 +60,6 @@ void Game::draw() {
 	if (currentroom == 2) {
 		masterX = -0.5;
 		masterY = -0.5;
-		ground2->draw();
-		ground3->draw();
 		bg2->draw(0);
 		bg1Wall->draw();
 		bg2Wall->draw();
@@ -73,10 +69,10 @@ void Game::draw() {
 		}
 	}
 
-	if (state == 0 || state == 4) {
+	if (state == 0) {
 		idleR->draw(1);
 	}
-	else if (state == 1 || state == 5) {
+	else if (state == 1) {
 		idleL->draw(1);
 	}
 	else if (state == 2) {
@@ -100,7 +96,7 @@ void Game::draw() {
 			}
 		}
 	}
-	if (energy < 1) {
+	if (energy < 0) {
 		//GameOver->draw(1);
 	}
 	
@@ -117,17 +113,12 @@ void Game::handleDown(unsigned char key) {
 		lookingLeft = true;
 		state = 3;
 	}
-	if (key == ' ') {
+	if (key == ' ' && jump == false) {
 		//std::cout << "Jump" << std::endl;
-		if (state % 2 == 0) {
-			state = 4;
-			jumpState = 1;
-		}
-		else {
-			state = 5;
-			jumpState = 1;
-		}
+		jump = true;
+		jumpState = 1;
 	}
+
 	if (key == 'f') {
 		metroidalive = false;
 	}
@@ -206,14 +197,14 @@ void Game::samusMove(float currX, float currY) {
 	if (state == 2) {
 		if (currentroom == 1) {
 			currX += 0.012;
-			if (currX < -0.95 && currX > -1.6) {
+			if (triangle->contains(currX, currY - idleL->getH())/*currX < -0.95 && currX > -1.6*/) {
 				currY = masterY + 0.15 - ((tan((19.654 * PI) / 180) * (currX + 1.6)));
 				updateY(currY);
 			}
 		}
 		if (currentroom == 2 && !bg2Wall->contains(currX + runR->getW(), currY)) {
 			currX += 0.012;
-			if (currX < -0.65 && currX > -1.11) {
+			if (triangle2->contains(currX, currY - idleL->getH()/*currX < -0.65 && currX > -1.11*/)) {
 				currY = masterY + 0.1 - ((tan((21.615 * PI) / 180) * (currX + 1.11)));
 				updateY(currY);
 			}
@@ -226,7 +217,7 @@ void Game::samusMove(float currX, float currY) {
 	if (state == 3) {
 		if (currentroom == 1 && !bg1Wall->contains(currX, currY)) {
 			currX -= 0.012;
-			if (currX < -0.9 && currX > -1.65) {
+			if (currX < -0.95 && currX > -1.65) {
 				currY = (-1 * (tan((19.654 * PI) / 180) * (currX + 0.9))) + masterY - 0.1;
 				updateY(currY);
 			}
@@ -242,99 +233,23 @@ void Game::samusMove(float currX, float currY) {
 		updateX(currX);
 		currX = masterX;
 	}
-	//jump facing right
-	if (state == 4) {
-		if (currentroom == 1) {
-			if (currY < 0.2 && jumpState == 1) {
-				currY += 0.018;
-				updateY(currY);
-			}
-			else if (!ground1->contains(currX, idleR->getY() - 0.4) && jumpState == 2) {
-				if (!triangle->contains(currX, idleR->getY())) {
-					currY -= 0.018;
-					updateY(currY);
-				}
-			}
-			else {
-				jumpState = 2;
-			}
+	//jump
+	if (jump == true) {
+		if (currY < 0.2 && jumpState == 1) {
+			currY += 0.018;
+			updateY(currY);
 		}
-		if (currentroom == 2) {
-			if (currX < -0.6) {
-				if (currY < 0.2 && jumpState == 1) {
-					currY += 0.018;
-					updateY(currY);
-				}
-				else if (!ground2->contains(currX, idleR->getY() - 0.4) && jumpState == 2) {
-					currY -= 0.018;
-					updateY(currY);
-				}
-				else {
-					jumpState = 2;
-				}
-			}
-			else {
-				if (currY < 0 && jumpState == 1) {
-					currY += 0.018;
-					updateY(currY);
-				}
-				else if (!ground3->contains(currX, idleR->getY() - 0.4) && jumpState == 2) {
-					currY -= 0.018;
-					updateY(currY);
-				}
-				else {
-					jumpState = 2;
-				}
-			}
+		else {
+			jumpState = 2;
+		}
+		if (currY > -0.375 && jumpState == 2) {
+			currY -= 0.018;
+			updateY(currY);
+		}
+		if (currY <= -0.375 && jumpState == 2) {
+			jump = false;
 		}
 		idleR->setY(currY);
-	}
-	//jump facing left
-	if (state == 5) {
-		if (currentroom == 1) {
-			if (currY < 0.2 && jumpState == 1) {
-				currY += 0.018;
-				updateY(currY);
-			}
-			else if (!ground1->contains(currX, idleR->getY() - 0.4) && jumpState == 2) {
-				if (!triangle->contains(currX, idleR->getY())) {
-					currY -= 0.018;
-					updateY(currY);
-				}
-			}
-			else {
-				jumpState = 2;
-			}
-		}
-		if (currentroom == 2) {
-			if (currX < -0.6) {
-				if (currY < 0.2 && jumpState == 1) {
-					currY += 0.018;
-					updateY(currY);
-				}
-				else if (!ground2->contains(currX, idleR->getY() - 0.4) && jumpState == 2) {
-					currY -= 0.018;
-					updateY(currY);
-				}
-				else {
-					jumpState = 2;
-				}
-			}
-			else {
-				if (currY < 0 && jumpState == 1) {
-					currY += 0.018;
-					updateY(currY);
-				}
-				else if (!ground3->contains(currX, idleR->getY() - 0.4) && jumpState == 2) {
-					currY -= 0.018;
-					updateY(currY);
-				}
-				else {
-					jumpState = 2;
-				}
-			}
-		}
-		idleL->setY(currY);
 	}
 }
 
@@ -420,7 +335,7 @@ void Game::action() {
 	float angY = Angelo->getY();
 
 	
-	music();
+	//music();
 	samusMove(currX, currY);
 	metroid(mx, my);
 	angelo(angX, angY);
