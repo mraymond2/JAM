@@ -47,6 +47,8 @@ Game::Game() {
 	start();
 }
 
+
+
 void Game::draw() {
 	
 	if (energy > 0) {
@@ -131,6 +133,7 @@ void Game::handleDown(unsigned char key) {
 	}
 
 	if (key == ' ') {
+		
 		if (state == 2 || state == 0) {
 			rightbullets.push_back(new TexRect("../bulletcircle.png", currX, (currY - 0.1), 0.1, 0.1));
 		}
@@ -139,19 +142,10 @@ void Game::handleDown(unsigned char key) {
 		}
 	}
 
-	if (key == 'f') {
-		metroidalive = false;
-	}
+	
 
-	if (key == 'o') {
-		angelohealth = angelohealth - 50;
-		if (angelohealth <= 50) {
-			if (change == false) {
-				Angelo->setMap("../sansgelo.png", 1, 1);
-				change == true;
-			}
-		}
-	}
+		
+	
 }
 void Game::handleUp(unsigned char key) {
 	if (key == 'd') {
@@ -159,6 +153,14 @@ void Game::handleUp(unsigned char key) {
 	}
 	if (key == 'a') {
 		state = 1;
+	}
+	if (key == ' ') {
+		if (angelohealth <= 500) {
+			if (change == false) {
+				Angelo->setMap("../sansgelo.png", 1, 1);
+				change = true;
+			}
+		}
 	}
 }
 
@@ -273,8 +275,55 @@ void Game::samusMove(float currX, float currY) {
 	}
 }
 
+
+void Game::angelo(float mx, float my) {
+	if (angelohealth < 0) {
+		angeloalive = false;
+	}
+	if (angeloalive == true) {
+		//left-right movement
+		if (left)
+			mx -= 0.01;
+		else
+			mx += 0.01;
+		if (mx < -1) {
+			left = false;
+		}
+		if (mx > 1.5 - Angelo->getW()) {
+			left = true;
+		}
+		//up-down movement
+		if (!up)
+			my -= 0.005;
+		else
+			my += 0.005;
+		if (my < -0.4) {
+			up = true;
+		}
+		if (my > 0.5 - Angelo->getH()) {
+			up = false;
+		}
+
+		Angelo->setX(mx);
+		Angelo->setY(my);
+
+	}
+}
+
+
+
+
 void Game::metroid(float mx, float my) {
-	if (metroidalive == 1) {
+
+	if (metroidhealth < 0) {
+		metroidcanbedamaged = false;
+		metroidalive = false;
+	}
+	if (metroidalive == true) {
+
+
+
+
 		//left-right movement
 		if (left)
 			mx -= 0.01;
@@ -314,50 +363,21 @@ void Game::metroid(float mx, float my) {
 				samuscanbedamaged = true;
 			}
 		}
-	}
-}
 
-void Game::angelo(float mx, float my) {
-	//left-right movement
-	if (left)
-		mx -= 0.01;
-	else
-		mx += 0.01;
-	if (mx < -1) {
-		left = false;
-	}
-	if (mx > 1.5 - Angelo->getW()) {
-		left = true;
-	}
-	//up-down movement
-	if (!up)
-		my -= 0.005;
-	else
-		my += 0.005;
-	if (my < -0.4) {
-		up = true;
-	}
-	if (my > 0.5 - Angelo->getH()) {
-		up = false;
-	}
+		//start
 
-	Angelo->setX(mx);
-	Angelo->setY(my);
 
+
+		//end
+
+	}
 }
 
 void Game::action() {
-	for (std::vector<TexRect*>::iterator i = leftbullets.begin(); i != leftbullets.end(); ++i) {
-		if (state == 3 || state == 1) {
-			(*i)->setX((*i)->getX() - .085);
-		}
-	}
-	for (std::vector<TexRect*>::iterator i = rightbullets.begin(); i != rightbullets.end(); ++i) {
-			if (state == 2 || state == 0) {
-				(*i)->setX((*i)->getX() + .085);
-			}
-	}
-	
+
+
+
+
 	currX = runR->getX();
 	currY = runR->getY();
 	float mx = Metroidspawn->getX();
@@ -365,14 +385,79 @@ void Game::action() {
 	float angX = Angelo->getX();
 	float angY = Angelo->getY();
 
-	
+	for (std::vector<TexRect*>::iterator i = leftbullets.begin(); i != leftbullets.end(); ++i) {
+
+		(*i)->setX((*i)->getX() - .075);
+
+		if (metroidalive) {
+			if (metroidcanbedamaged == true) {
+				if (Metroidspawn->contains((*i)->getX(), (*i)->getY())) {
+					metroidhealth -= bulletdamage;
+					std::cout << "Metroid got hit and health is " << metroidhealth << std::endl;
+					metroidcanbedamaged = false;
+
+				}
+			}
+			else {
+				if (!Metroidspawn->contains((*i)->getX(), (*i)->getY())) {
+					metroidcanbedamaged = true;
+				}
+			}
+		}
+
+
+	}
+	for (std::vector<TexRect*>::iterator i = rightbullets.begin(); i != rightbullets.end(); ++i) {
+
+		(*i)->setX((*i)->getX() + .075);
+
+
+		if (currentroom == 2) {
+
+			if (angeloalive == true) {
+				if (angelocanbedamaged == true) {
+					if (Angelo->contains((*i)->getX(), (*i)->getY())) {
+						angelohealth -= bulletdamage;
+						std::cout << "angelo got hit and health is " << angelohealth << std::endl;
+						angelocanbedamaged = false;
+
+					}
+				}
+
+
+				else {
+					if (!Angelo->contains((*i)->getX(), (*i)->getY())) {
+						angelocanbedamaged = true;
+					}
+				}
+			}
+		}
+
+		if (metroidalive) {
+		if (metroidcanbedamaged == true) {
+			if (Metroidspawn->contains((*i)->getX(), (*i)->getY())) {
+				metroidhealth -= bulletdamage;
+				std::cout << "Metroid got hit and health is " << metroidhealth << std::endl;
+				metroidcanbedamaged = false;
+
+			}
+
+		}
+		
+		else {
+			if (!Metroidspawn->contains((*i)->getX(), (*i)->getY())) {
+				metroidcanbedamaged = true;
+			}
+		}
+		}
+	}
+
 	//music();
 	samusMove(currX, currY);
 	metroid(mx, my);
 	angelo(angX, angY);
 	glutPostRedisplay();
 }
-
 Game::~Game() {
 	delete triangle;
 	delete triangle2;
@@ -392,7 +477,7 @@ Game::~Game() {
 	delete Energytank3;
 	delete Energytank4;
 	delete Energytank5;
-	delete Energylevel;
+	
 	//delete GameOver;
 
 }

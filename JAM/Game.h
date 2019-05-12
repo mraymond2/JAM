@@ -41,6 +41,7 @@ class Game: private Timer{
 
 public:
 	//samus
+	int bulletdamage = 10;
 	float currX = 0;
 	float currY = 0;
 	int energy = 5;
@@ -52,7 +53,8 @@ public:
 	bool Grounded = true;
 	bool lookingLeft = false;
 	//angelo
-	int angelohealth = 200;
+	bool angelocanbedamaged = true;
+	int angelohealth = 1000;
 	bool change = false;
 	bool angeloalive = true;
 	bool angleft = true;
@@ -61,6 +63,8 @@ public:
 	bool alreadyplayedbrinstar = false;
 	bool alreadyplayedmega = false;
 	//metroid
+	bool metroidcanbedamaged = true;
+	int metroidhealth = 250;
 	bool samuscanbedamaged = true;
 	bool metroidalive = true;
 	bool metroidattacking = false;
