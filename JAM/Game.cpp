@@ -417,14 +417,7 @@ void Game::metroid(float mx, float my) {
 	}
 }
 
-void Game::action() {
-	currX = runR->getX();
-	currY = runR->getY();
-	float mx = Metroidspawn->getX();
-	float my = Metroidspawn->getY();
-	float angX = Angelo->getX();
-	float angY = Angelo->getY();
-
+void Game::bulletaction() {
 	for (std::vector<TexRect*>::iterator i = leftbullets.begin(); i != leftbullets.end(); ++i) {
 
 		(*i)->setX((*i)->getX() - .075);
@@ -437,6 +430,7 @@ void Game::action() {
 						angelohealth -= bulletdamage;
 						std::cout << "angelo got hit and health is " << angelohealth << std::endl;
 						angelocanbedamaged = false;
+						(*i)->setY(10);
 
 					}
 				}
@@ -454,6 +448,7 @@ void Game::action() {
 					metroidhealth -= bulletdamage;
 					std::cout << "Metroid got hit and health is " << metroidhealth << std::endl;
 					metroidcanbedamaged = false;
+					(*i)->setY(10);
 
 				}
 			}
@@ -477,6 +472,7 @@ void Game::action() {
 						angelohealth -= bulletdamage;
 						std::cout << "angelo got hit and health is " << angelohealth << std::endl;
 						angelocanbedamaged = false;
+						(*i)->setY(10);
 
 					}
 				}
@@ -494,7 +490,7 @@ void Game::action() {
 					metroidhealth -= bulletdamage;
 					std::cout << "Metroid got hit and health is " << metroidhealth << std::endl;
 					metroidcanbedamaged = false;
-
+					(*i)->setY(10);
 				}
 
 			}
@@ -507,10 +503,22 @@ void Game::action() {
 		}
 	}
 
+}
+void Game::action() {
+	currX = runR->getX();
+	currY = runR->getY();
+	float mx = Metroidspawn->getX();
+	float my = Metroidspawn->getY();
+	float angX = Angelo->getX();
+	float angY = Angelo->getY();
+
+	
+
 	music();
 	samusMove(currX, currY);
 	metroid(mx, my);
 	angelo(angX, angY);
+	bulletaction();
 	glutPostRedisplay();
 }
 Game::~Game() {

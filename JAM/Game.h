@@ -80,6 +80,7 @@ public:
 
 
 	Game();
+	void bulletaction();
 	void music();
 	void draw();
 	void handleDown(unsigned char key);
