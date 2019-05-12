@@ -7,12 +7,13 @@
 #include "AnimatedRect.h"
 #include <vector>
 
-class Game: private Timer{
+class Game : private Timer {
 	std::vector<TexRect*> rightbullets;
 	std::vector<TexRect*> leftbullets;
 	RightTriangle* triangle;
 	RightTriangle* triangle2;
 	TextBox* Energylevel;
+	TextBox* gameOverText;
 	AnimatedRect* Angelo;
 	AnimatedRect* Energytank1;
 	AnimatedRect* Energytank2;
@@ -28,6 +29,9 @@ class Game: private Timer{
 	AnimatedRect* runL;
 	Rect* bg1Wall;
 	Rect* bg2Wall;
+	Rect* ground1;
+	Rect* ground2;
+	Rect* ground3;
 	AnimatedRect* Metroidspawn;
 	//AnimatedRect* GameOver;
 
@@ -50,8 +54,10 @@ public:
 	bool jump = false;
 	int currentroom = 1;
 	bool samusAlive = true;
+	bool samuscanbedamaged = true;
 	bool Grounded = true;
 	bool lookingLeft = false;
+	bool bulletShow = true;
 	//angelo
 	bool angelocanbedamaged = true;
 	int angelohealth = 1000;
@@ -65,7 +71,6 @@ public:
 	//metroid
 	bool metroidcanbedamaged = true;
 	int metroidhealth = 250;
-	bool samuscanbedamaged = true;
 	bool metroidalive = true;
 	bool metroidattacking = false;
 	bool up = true;
