@@ -60,7 +60,7 @@ public:
 	bool bulletShow = true;
 	//angelo
 	bool angelocanbedamaged = true;
-	int angelohealth = 1000;
+	int angelohealth = 250;
 	bool change = false;
 	bool angeloalive = true;
 	bool angleft = true;
@@ -70,7 +70,7 @@ public:
 	bool alreadyplayedmega = false;
 	//metroid
 	bool metroidcanbedamaged = true;
-	int metroidhealth = 250;
+	int metroidhealth = 100;
 	bool metroidalive = true;
 	bool metroidattacking = false;
 	bool up = true;

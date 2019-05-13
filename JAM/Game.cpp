@@ -161,7 +161,7 @@ void Game::handleUp(unsigned char key) {
 		state = 1;
 	}
 	if (key == ' ') {
-		if (angelohealth <= 500) {
+		if (angelohealth <= 100) {
 			if (change == false) {
 				Angelo->setMap("../sansgelo.png", 1, 1);
 				change = true;
@@ -360,6 +360,7 @@ void Game::angelo(float mx, float my) {
 					std::cout << "Samus got hit. Energy is: " << energy << std::endl;
 				}
 			}
+
 			else {
 				if (!Angelo->contains(idleR->getX() + (idlemasterW / 2), idleR->getY() - (idlemasterH / 3.7))) {
 					samuscanbedamaged = true;
@@ -409,6 +410,7 @@ void Game::metroid(float mx, float my) {
 				std::cout << "Samus got hit. Energy is: " << energy << std::endl;
 			}
 		}
+
 		else {
 			if (!Metroidspawn->contains(idleR->getX() + (idlemasterW / 2), idleR->getY() - (idlemasterH / 3.7))) {
 				samuscanbedamaged = true;
@@ -416,6 +418,7 @@ void Game::metroid(float mx, float my) {
 		}
 	}
 }
+
 
 void Game::bulletaction() {
 	for (std::vector<TexRect*>::iterator i = leftbullets.begin(); i != leftbullets.end(); ++i) {
@@ -434,6 +437,7 @@ void Game::bulletaction() {
 
 					}
 				}
+
 				else {
 					if (!Angelo->contains((*i)->getX(), (*i)->getY())) {
 						angelocanbedamaged = true;
@@ -452,6 +456,7 @@ void Game::bulletaction() {
 
 				}
 			}
+
 			else {
 				if (!Metroidspawn->contains((*i)->getX(), (*i)->getY())) {
 					metroidcanbedamaged = true;
@@ -476,6 +481,7 @@ void Game::bulletaction() {
 
 					}
 				}
+
 				else {
 					if (!Angelo->contains((*i)->getX(), (*i)->getY())) {
 						angelocanbedamaged = true;
@@ -502,8 +508,9 @@ void Game::bulletaction() {
 			}
 		}
 	}
-
 }
+
+
 void Game::action() {
 	currX = runR->getX();
 	currY = runR->getY();
@@ -512,8 +519,6 @@ void Game::action() {
 	float angX = Angelo->getX();
 	float angY = Angelo->getY();
 
-	
-
 	music();
 	samusMove(currX, currY);
 	metroid(mx, my);
@@ -521,9 +526,14 @@ void Game::action() {
 	bulletaction();
 	glutPostRedisplay();
 }
+
+
 Game::~Game() {
 	delete triangle;
 	delete triangle2;
+	delete ground1;
+	delete ground2;
+	delete ground3;
 	delete bg1;
 	delete bg2;
 	delete Samus;
@@ -535,13 +545,12 @@ Game::~Game() {
 	delete bg2Wall;
 	delete Metroidspawn;
 	delete Angelo;
+	delete Energylevel;
 	delete Energytank1;
 	delete Energytank2;
 	delete Energytank3;
 	delete Energytank4;
 	delete Energytank5;
-
+	delete gameOverText;
 	//delete GameOver;
-
 }
-
